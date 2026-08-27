@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A.T.A CARNET 신청 및 발급 절차 가이드</title>
+<style>
+  :root{
+    --navy-900:#0f172a;
+    --navy-800:#1e293b;
+    --navy-700:#1e3a8a;
+    --navy-600:#2549a3;
+    --slate-500:#64748b;
+    --slate-300:#cbd5e1;
+    --slate-100:#f1f5f9;
+    --slate-50:#f8fafc;
+    --accent:#3b82f6;
+    --white:#ffffff;
+    --danger:#b91c1c;
+    --danger-bg:#fef2f2;
+    --tip-bg:#eff6ff;
+    --radius:12px;
+    --shadow:0 4px 14px rgba(15,23,42,0.08);
+    --shadow-lg:0 10px 30px rgba(15,23,42,0.14);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:var(--slate-50);
+    color:var(--navy-900);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--navy-700);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  img{max-width:100%;}
+
+  /* Header */
+  header.site-header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:var(--navy-900);
+    box-shadow:0 2px 10px rgba(0,0,0,0.2);
+  }
+  .header-inner{
+    max-width:1100px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 20px;
+  }
+  .logo-wrap{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .logo-wrap img{
+    height:36px;
+    width:auto;
+    display:block;
+  }
+  .logo-text{
+    color:var(--white);
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.5px;
+    border-left:1px solid rgba(255,255,255,0.25);
+    padding-left:12px;
+  }
+  .header-badge{
+    color:var(--slate-300);
+    font-size:13px;
+    display:none;
+  }
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(135deg,var(--navy-900) 0%,var(--navy-700) 100%);
+    color:var(--white);
+    padding:56px 20px 64px;
+    text-align:center;
+  }
+  .hero .eyebrow{
+    display:inline-block;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    padding:6px 16px;
+    border-radius:999px;
+    font-size:13px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(24px,4vw,38px);
+    margin:0 0 14px;
+    font-weight:800;
+    letter-spacing:-0.5px;
+  }
+  .hero p{
+    color:var(--slate-300);
+    font-size:16px;
+    max-width:640px;
+    margin:0 auto;
+  }
+
+  /* Container */
+  .container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+
+  section{
+    padding:56px 0;
+  }
+  section + section{
+    border-top:1px solid var(--slate-100);
+  }
+
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:26px;
+    font-weight:800;
+    color:var(--navy-900);
+    margin-bottom:8px;
+  }
+  .section-title .num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:var(--navy-700);
+    color:var(--white);
+    font-size:15px;
+    font-weight:700;
+    flex-shrink:0;
+  }
+  .section-sub{
+    color:var(--slate-500);
+    margin-bottom:28px;
+    font-size:15px;
+  }
+
+  /* Overview card */
+  .overview-card{
+    background:var(--white);
+    border:1px solid var(--slate-100);
+    border-radius:var(--radius);
+    padding:28px;
+    box-shadow:var(--shadow);
+    margin-bottom:20px;
+  }
+  .overview-card p{
+    margin:0;
+    font-size:15.5px;
+    color:var(--navy-800);
+  }
+  .overview-card strong{color:var(--navy-700);}
+
+  .tip-box{
+    display:flex;
+    gap:14px;
+    background:var(--tip-bg);
+    border:1px solid #bfdbfe;
+    border-left:5px solid var(--navy-700);
+    border-radius:var(--radius);
+    padding:18px 20px;
+  }
+  .tip-box .tip-icon{
+    font-size:22px;
+    flex-shrink:0;
+    line-height:1;
+  }
+  .tip-box .tip-text{
+    font-size:14.5px;
+    color:var(--navy-800);
+  }
+  .tip-box .tip-text b{
+    display:block;
+    color:var(--navy-700);
+    margin-bottom:4px;
+    font-size:14px;
+    letter-spacing:0.3px;
+  }
+
+  /* Quick nav */
+  .quick-nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:24px;
+  }
+  .quick-nav a{
+    background:var(--white);
+    border:1px solid var(--slate-300);
+    color:var(--navy-800);
+    font-size:13.5px;
+    font-weight:600;
+    padding:9px 16px;
+    border-radius:999px;
+    transition:all .15s ease;
+    text-decoration:none;
+  }
+  .quick-nav a:hover{
+    background:var(--navy-700);
+    border-color:var(--navy-700);
+    color:var(--white);
+  }
+
+  /* Timeline / Steps */
+  .timeline{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:23px;
+    top:8px;
+    bottom:8px;
+    width:2px;
+    background:var(--slate-300);
+  }
+  @media (max-width:640px){
+    .timeline::before{left:19px;}
+  }
+
+  .step-card{
+    position:relative;
+    display:flex;
+    gap:20px;
+    background:var(--white);
+    border:1px solid var(--slate-100);
+    border-radius:var(--radius);
+    padding:22px 22px 22px 0;
+    box-shadow:var(--shadow);
+    scroll-margin-top:90px;
+  }
+  .step-num{
+    position:relative;
+    z-index:1;
+    flex-shrink:0;
+    width:48px;
+    height:48px;
+    margin-left:0;
+    border-radius:50%;
+    background:var(--navy-700);
+    color:var(--white);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:16px;
+    box-shadow:0 0 0 6px var(--slate-50);
+  }
+  @media (max-width:640px){
+    .step-num{width:40px;height:40px;font-size:14px;}
+  }
+  .step-body{flex:1;min-width:0;padding-right:4px;}
+  .step-body h3{
+    margin:2px 0 10px;
+    font-size:18px;
+    color:var(--navy-900);
+    font-weight:800;
+  }
+  .step-body h3 .step-tag{
+    display:inline-block;
+    background:var(--navy-700);
+    color:var(--white);
+    font-size:11px;
+    font-weight:700;
+    padding:2px 9px;
+    border-radius:6px;
+    margin-right:8px;
+    vertical-align:middle;
+    letter-spacing:0.5px;
+  }
+  .step-body ul{
+    margin:0 0 12px;
+    padding-left:20px;
+    font-size:14.5px;
+    color:var(--navy-800);
+  }
+  .step-body ul li{margin-bottom:6px;}
+  .step-body ul li:last-child{margin-bottom:0;}
+  .step-body p.desc{
+    font-size:14.5px;
+    color:var(--navy-800);
+    margin:0 0 12px;
+  }
+
+  .info-box{
+    background:var(--slate-100);
+    border-radius:8px;
+    padding:14px 16px;
+    font-size:13.5px;
+    color:var(--navy-800);
+    margin-top:10px;
+  }
+  .info-box .info-title{
+    font-weight:700;
+    color:var(--navy-700);
+    margin-bottom:6px;
+    font-size:13px;
+  }
+  .info-box .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 14px;
+    align-items:center;
+  }
+
+  .warn-box{
+    display:flex;
+    gap:10px;
+    background:var(--danger-bg);
+    border:1px solid #fecaca;
+    border-left:4px solid var(--danger);
+    border-radius:8px;
+    padding:12px 14px;
+    font-size:13.5px;
+    color:#7f1d1d;
+    margin-top:10px;
+  }
+  .warn-box .warn-icon{flex-shrink:0;font-size:16px;line-height:1.3;}
+
+  .flow-box{
+    background:var(--slate-50);
+    border:1px dashed var(--slate-300);
+    border-radius:8px;
+    padding:14px 16px;
+    font-size:13.5px;
+    color:var(--navy-800);
+    margin-top:10px;
+    overflow-x:auto;
+  }
+  .flow-box .flow-title{
+    font-weight:700;
+    color:var(--navy-700);
+    margin-bottom:8px;
+    font-size:13px;
+  }
+  .flow-steps{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:6px;
+    white-space:normal;
+  }
+  .flow-steps span.node{
+    background:var(--white);
+    border:1px solid var(--slate-300);
+    border-radius:6px;
+    padding:6px 10px;
+    font-size:12.5px;
+    white-space:nowrap;
+  }
+  .flow-steps span.arrow{
+    color:var(--slate-500);
+    font-weight:700;
+  }
+
+  /* Checklist section */
+  .checklist-card{
+    background:var(--white);
+    border:1px solid var(--slate-100);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:8px 8px;
+  }
+  .checklist-item{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:14px 16px;
+    border-bottom:1px solid var(--slate-100);
+  }
+  .checklist-item:last-child{border-bottom:none;}
+  .checklist-item input[type="checkbox"]{
+    width:20px;
+    height:20px;
+    accent-color:var(--navy-700);
+    margin-top:2px;
+    flex-shrink:0;
+    cursor:pointer;
+  }
+  .checklist-item label{
+    font-size:14.5px;
+    color:var(--navy-800);
+    cursor:pointer;
+  }
+  .checklist-item label b{
+    color:var(--navy-900);
+    display:block;
+    margin-bottom:2px;
+    font-size:14.5px;
+  }
+  .checklist-item.checked label{
+    color:var(--slate-500);
+    text-decoration:line-through;
+  }
+  .checklist-progress{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:16px;
+    font-size:13.5px;
+    color:var(--navy-800);
+    font-weight:600;
+  }
+  .progress-track{
+    flex:1;
+    height:8px;
+    background:var(--slate-100);
+    border-radius:999px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    background:var(--navy-700);
+    width:0%;
+    transition:width .3s ease;
+  }
+
+  /* Contact section */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+  @media (max-width:640px){
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  .contact-card{
+    background:var(--white);
+    border:1px solid var(--slate-100);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:22px;
+  }
+  .contact-card h4{
+    margin:0 0 4px;
+    font-size:16px;
+    color:var(--navy-900);
+    font-weight:800;
+  }
+  .contact-card .dept{
+    color:var(--slate-500);
+    font-size:13px;
+    margin-bottom:14px;
+  }
+  .contact-card .contact-line{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+    margin-bottom:8px;
+    color:var(--navy-800);
+  }
+  .contact-card .contact-line:last-child{margin-bottom:0;}
+  .contact-card .icon{
+    width:20px;
+    text-align:center;
+    flex-shrink:0;
+  }
+
+  .link-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:var(--navy-900);
+    color:var(--white);
+    border-radius:var(--radius);
+    padding:20px 24px;
+    margin-top:20px;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .link-card .link-text b{display:block;font-size:15px;margin-bottom:4px;}
+  .link-card .link-text span{color:var(--slate-300);font-size:13px;}
+  .link-card a.btn{
+    background:var(--white);
+    color:var(--navy-900);
+    font-weight:700;
+    font-size:13.5px;
+    padding:10px 20px;
+    border-radius:8px;
+    white-space:nowrap;
+  }
+  .link-card a.btn:hover{text-decoration:none;opacity:0.9;}
+
+  /* Footer */
+  footer{
+    background:var(--navy-900);
+    color:var(--slate-300);
+    text-align:center;
+    padding:28px 20px;
+    font-size:13px;
+  }
+  footer .foot-logo{
+    color:var(--white);
+    font-weight:700;
+    margin-bottom:6px;
+    font-size:14px;
+  }
+
+  /* Back to top */
+  #backToTop{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:var(--navy-700);
+    color:var(--white);
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+    box-shadow:var(--shadow-lg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:all .25s ease;
+    z-index:200;
+  }
+  #backToTop.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
+  #backToTop:hover{background:var(--navy-600);}
+
+  @media (max-width:480px){
+    #backToTop{
+      right:14px;
+      bottom:14px;
+      width:42px;
+      height:42px;
+      font-size:18px;
+    }
+  }
+
+  /* Responsive tweaks */
+  @media (min-width:600px){
+    .header-badge{display:inline;}
+  }
+  @media (max-width:640px){
+    section{padding:40px 0;}
+    .section-title{font-size:21px;}
+    .step-card{padding:16px 14px 16px 0;gap:12px;}
+    .hero{padding:44px 16px 48px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <img src="리브스메드 로고.png" alt="리브스메드 로고">
+      <span class="logo-text">사내 안내 포털</span>
+    </div>
+    <span class="header-badge">해외영업지원팀 · 사내 공지</span>
+  </div>
+</header>
+
+<section class="hero" style="padding-top:48px;">
+  <div class="container">
+    <span class="eyebrow">INTERNAL GUIDE · ATA CARNET</span>
+    <h1>A.T.A CARNET 신청 및 발급 절차 가이드</h1>
+    <p>전시회 및 해외 출장 시 필요한 ATA 까르네(CARNET) 신청부터 수령까지, 전체 진행 절차를 단계별로 안내합니다.</p>
+  </div>
+</section>
+
+<main class="container">
+
+  <!-- 섹션 1: 기본 개요 -->
+  <section id="overview">
+    <div class="section-title"><span class="num">1</span>ATA CARNET 기본 개요</div>
+    <p class="section-sub">까르네가 무엇인지, 왜 필요한지 먼저 확인하세요.</p>
+
+    <div class="overview-card">
+      <p>
+        <strong>ATA CARNET(까르네)</strong>란 전시회 참가, 샘플 반출 등으로 물품을 해외에 <strong>임시로 수출입</strong>할 때
+        각국 세관에서 별도의 관세 납부나 복잡한 통관 절차 없이 물품을 반출·반입할 수 있도록 해주는
+        <strong>국제 통관 서류(통관 여권)</strong>입니다. 전시회 핸드캐리 물품, 데모 장비, 샘플 등을
+        해외로 가지고 나갈 때 반드시 사전에 준비해야 합니다.
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text">
+        <b>TIP</b>
+        까르네 발급은 서류 준비 → 보증보험 가입 → 상공회의소 발급 신청 → 수수료 결제 → 수령까지
+        영업일 기준 며칠이 소요될 수 있으므로, 출국 일정보다 <strong>최소 1주일 이상 여유를 두고</strong> 미리 준비하시기 바랍니다.
+      </div>
+    </div>
+
+    <div class="quick-nav">
+      <a href="#step1">Step 1. 서류 작성</a>
+      <a href="#step2">Step 2. 보증보험 신청</a>
+      <a href="#step3">Step 3. 전자서명 &amp; 결제</a>
+      <a href="#step4">Step 4. 까르네 발급 신청</a>
+      <a href="#step5">Step 5. 수수료 결제</a>
+      <a href="#step6">Step 6. 방문 수령</a>
+      <a href="#checklist">✔ 체크리스트</a>
+      <a href="#contact">문의처</a>
+    </div>
+  </section>
+
+  <!-- 섹션 2: 단계별 진행 매뉴얼 -->
+  <section id="manual">
+    <div class="section-title"><span class="num">2</span>단계별 진행 매뉴얼</div>
+    <p class="section-sub">Step 1부터 Step 6까지 순서대로 진행하세요.</p>
+
+    <div class="timeline">
+
+      <!-- Step 1 -->
+      <div class="step-card" id="step1">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3><span class="step-tag">STEP 1</span>서류 작성</h3>
+          <p class="desc">대한상공회의소 홈페이지의 양식 및 견본을 참고하여 ATA 까르네 워드 양식을 다운로드한 후 작성합니다.</p>
+          <div class="link-card">
+            <div class="link-text">
+              <b>대한상공회의소 원산지증명센터</b>
+              <span>양식 및 견본 다운로드 페이지로 이동</span>
+            </div>
+            <a class="btn" href="https://cert.korcham.net/" target="_blank" rel="noopener">홈페이지 바로가기</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card" id="step2">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3><span class="step-tag">STEP 2</span>보증보험 신청</h3>
+          <p class="desc">작성한 <strong>발급신청서</strong>와 <strong>사업자등록증</strong>을 서울보증보험 담당자에게 메일로 발송합니다.</p>
+          <div class="info-box">
+            <div class="info-title">담당자 정보</div>
+            <div class="contact-row">
+              <span>정지윤 과장님</span>
+              <span>·</span>
+              <a href="mailto:eje9911@naver.com">✉ eje9911@naver.com</a>
+              <span>·</span>
+              <a href="tel:0260500021">☎ 02-6050-0021</a>
+              <span>·</span>
+              <a href="tel:01026184760">📱 010-2618-4760</a>
+            </div>
+          </div>
+          <div class="warn-box">
+            <div class="warn-icon">⚠️</div>
+            <div><strong>주의사항:</strong> 서울보증보험은 <strong>오후 5시까지만</strong> 접수 가능합니다. 시간 내 발송을 완료하세요.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card" id="step3">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3><span class="step-tag">STEP 3</span>보증보험 전자서명 &amp; 결제</h3>
+          <p class="desc">서울보증보험 홈페이지에서 전자서명 및 보험료 결제를 진행합니다.</p>
+          <div class="flow-box">
+            <div class="flow-title">진행 순서</div>
+            <div class="flow-steps">
+              <span class="node">www.sgic.co.kr 접속</span><span class="arrow">→</span>
+              <span class="node">법인 공동인증서 로그인</span><span class="arrow">→</span>
+              <span class="node">가입</span><span class="arrow">→</span>
+              <span class="node">보험계약 전자서명</span><span class="arrow">→</span>
+              <span class="node">승인 증권번호 클릭 후 전자서명</span><span class="arrow">→</span>
+              <span class="node">보험료 결제</span><span class="arrow">→</span>
+              <span class="node">예산품의 / 지출결의</span>
+            </div>
+          </div>
+          <div class="link-card">
+            <div class="link-text">
+              <b>서울보증보험(SGI)</b>
+              <span>www.sgic.co.kr</span>
+            </div>
+            <a class="btn" href="https://www.sgic.co.kr/" target="_blank" rel="noopener">사이트 바로가기</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card" id="step4">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3><span class="step-tag">STEP 4</span>대한상공회의소 까르네 발급 신청</h3>
+          <p class="desc">보증보험 절차 완료 후 대한상공회의소에 까르네 발급을 신청합니다.</p>
+          <div class="tip-box">
+            <div class="tip-icon">💡</div>
+            <div class="tip-text">
+              <b>TIP</b>
+              전시회명이 길면 CARNET 증서 출력 시 내용이 잘릴 수 있으므로 <strong>간략하게 축약하여 기재</strong>하는 것을 권장합니다.
+              <br>예시: <em>CES 2026, Las Vegas, 2026.5.1~5.31</em>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="step-card" id="step5">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3><span class="step-tag">STEP 5</span>수수료 결제</h3>
+          <p class="desc">발급 신청이 승인되면 수수료를 결제합니다. 아래 시간 조건을 반드시 확인하세요.</p>
+          <ul>
+            <li>승인 후 <strong>24시간 이내 미결제 시 승인이 자동 취소</strong>됩니다.</li>
+            <li><strong>e까르네 ID / PIN 코드</strong>는 결제 완료 후 <strong>1시간 뒤</strong>에 생성됩니다.</li>
+          </ul>
+          <div class="warn-box">
+            <div class="warn-icon">⚠️</div>
+            <div>당일 내 모든 절차를 완료하려면 <strong>오후 6시 이전 결제</strong>가 필수입니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="step-card" id="step6">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h3><span class="step-tag">STEP 6</span>방문 수령 및 접수증 출력</h3>
+          <p class="desc">결제 완료 후 대한상공회의소 원산지증명센터를 방문하여 까르네를 수령합니다.</p>
+          <ul>
+            <li>결제 완료 <strong>익일 오후 2시 이후</strong> 방문 수령이 가능합니다.</li>
+            <li>방문 장소: <strong>대한상공회의소 원산지증명센터</strong></li>
+          </ul>
+          <div class="warn-box">
+            <div class="warn-icon">⚠️</div>
+            <div>상공회의소 홈페이지에서 <strong>'접수증'을 출력</strong>하여 방문 시 반드시 지참하세요.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 섹션 3: 체크리스트 -->
+  <section id="checklist">
+    <div class="section-title"><span class="num">✔</span>진행 체크리스트</div>
+    <p class="section-sub">각 단계를 완료할 때마다 체크하며 진행 상황을 관리하세요. (체크 상태는 저장되지 않습니다)</p>
+
+    <div class="checklist-progress">
+      <span id="progressLabel">0 / 6 완료</span>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <div class="checklist-card" id="checklistCard">
+      <div class="checklist-item">
+        <input type="checkbox" id="chk1">
+        <label for="chk1"><b>Step 1. 서류 작성</b>ATA 까르네 워드 양식 다운로드 및 작성 완료</label>
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" id="chk2">
+        <label for="chk2"><b>Step 2. 보증보험 신청</b>발급신청서 + 사업자등록증 메일 발송 완료 (오후 5시 이전)</label>
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" id="chk3">
+        <label for="chk3"><b>Step 3. 전자서명 &amp; 결제</b>SGI 서울보증보험 전자서명 및 보험료 결제 완료</label>
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" id="chk4">
+        <label for="chk4"><b>Step 4. 까르네 발급 신청</b>대한상공회의소 발급 신청 완료 (전시회명 축약 기재 확인)</label>
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" id="chk5">
+        <label for="chk5"><b>Step 5. 수수료 결제</b>승인 후 24시간 이내, 오후 6시 이전 수수료 결제 완료</label>
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" id="chk6">
+        <label for="chk6"><b>Step 6. 방문 수령</b>접수증 출력 및 원산지증명센터 방문 수령 완료</label>
+      </div>
+    </div>
+  </section>
+
+  <!-- 섹션 4: 문의 및 지원 -->
+  <section id="contact">
+    <div class="section-title"><span class="num">i</span>문의 및 지원</div>
+    <p class="section-sub">진행 중 궁금한 사항은 아래 담당자에게 문의하세요.</p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h4>정지윤 과장님</h4>
+        <div class="dept">서울보증보험 담당자</div>
+        <div class="contact-line"><span class="icon">✉</span><a href="mailto:eje9911@naver.com">eje9911@naver.com</a></div>
+        <div class="contact-line"><span class="icon">☎</span><a href="tel:0260500021">02-6050-0021</a></div>
+        <div class="contact-line"><span class="icon">📱</span><a href="tel:01026184760">010-2618-4760</a></div>
+      </div>
+
+      <div class="contact-card">
+        <h4>대한상공회의소</h4>
+        <div class="dept">원산지증명센터</div>
+        <div class="contact-line"><span class="icon">🌐</span><a href="https://cert.korcham.net/" target="_blank" rel="noopener">cert.korcham.net</a></div>
+        <div class="contact-line"><span class="icon">🌐</span><a href="https://www.sgic.co.kr/" target="_blank" rel="noopener">서울보증보험 www.sgic.co.kr</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-logo">LIVSMED Inc.</div>
+  <div>본 페이지는 사내 업무 참고용 안내 자료입니다. 세부 정책 및 담당자 정보는 변경될 수 있습니다.</div>
+</footer>
+
+<button id="backToTop" aria-label="맨 위로 이동" title="맨 위로 이동">↑</button>
+
+<script>
+  // Back to top button
+  var backToTopBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+  backToTopBtn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Checklist progress tracking
+  var checkboxes = document.querySelectorAll('#checklistCard input[type="checkbox"]');
+  var progressFill = document.getElementById('progressFill');
+  var progressLabel = document.getElementById('progressLabel');
+
+  function updateProgress() {
+    var total = checkboxes.length;
+    var checked = 0;
+    checkboxes.forEach(function (cb) {
+      var item = cb.closest('.checklist-item');
+      if (cb.checked) {
+        checked++;
+        item.classList.add('checked');
+      } else {
+        item.classList.remove('checked');
+      }
+    });
+    var percent = total === 0 ? 0 : Math.round((checked / total) * 100);
+    progressFill.style.width = percent + '%';
+    progressLabel.textContent = checked + ' / ' + total + ' 완료';
+  }
+
+  checkboxes.forEach(function (cb) {
+    cb.addEventListener('change', updateProgress);
+  });
+
+  updateProgress();
+</script>
+
+</body>
+</html>
