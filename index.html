@@ -443,10 +443,25 @@
   .checklist-item{
     display:flex;
     align-items:flex-start;
+    flex-wrap:wrap;
     gap:12px;
     padding:14px 16px;
     border-bottom:1px solid var(--slate-100);
   }
+  .checklist-links{
+    display:flex;
+    gap:10px;
+    margin-left:auto;
+    padding-top:2px;
+    flex-shrink:0;
+  }
+  .checklist-links a{
+    color:var(--navy-700);
+    font-size:12.5px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .checklist-links a:hover{text-decoration:underline;}
   .checklist-item:last-child{border-bottom:none;}
   .checklist-item input[type="checkbox"]{
     width:20px;
@@ -765,11 +780,11 @@
   <div class="main-layout">
     <nav class="quick-nav" aria-label="빠른 이동">
       <a href="#overview">개요</a>
-      <a href="#step1">Step 1. 서류 작성</a>
-      <a href="#step2">Step 2. 전자서명 &amp; 결제</a>
-      <a href="#step3">Step 3. 까르네 발급 신청</a>
-      <a href="#step4">Step 4. 수수료 결제</a>
-      <a href="#step5">Step 5. 방문 수령</a>
+      <a href="#step1"> 1. 서류 작성</a>
+      <a href="#step2"> 2. 전자서명 &amp; 결제</a>
+      <a href="#step3"> 3. 까르네 발급 신청</a>
+      <a href="#step4"> 4. 수수료 결제</a>
+      <a href="#step5"> 5. 방문 수령</a>
       <a href="#checklist">체크리스트</a>
     </nav>
 
