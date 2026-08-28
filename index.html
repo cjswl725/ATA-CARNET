@@ -388,10 +388,21 @@
     padding:10px 14px;
     color:var(--navy-800);
     border-top:1px solid var(--slate-100);
+    vertical-align:middle;
   }
   .fee-table tr:first-child td{border-top:none;}
   .fee-table th:last-child,
   .fee-table td:last-child{text-align:right;}
+  .fee-table td[rowspan]{
+    text-align:center;
+  }
+  .fee-table caption{
+    caption-side:bottom;
+    padding-top:8px;
+    color:var(--slate-500);
+    font-size:12px;
+    text-align:center;
+  }
 
   .flow-box{
     background:var(--slate-50);
@@ -861,6 +872,7 @@
         <div class="step-body">
           <h3><span class="step-tag">STEP 3</span>대한상공회의소 까르네 발급 신청</h3>
           <p class="desc">보증보험 절차 완료 후 대한상공회의소 홈페이지에서 까르네 발급을 신청합니다.</p>
+        </div>
       </div>
 
       <!-- Step 4 -->
@@ -870,14 +882,17 @@
           <p class="desc">발급 신청이 승인되면 수수료를 결제합니다. 아래 시간 조건을 반드시 확인하세요.</p>
           <div class="fee-table-wrap">
             <table class="fee-table">
+              <caption>까르네 발급 수수료(VAT 포함)</caption>
               <thead>
-                <tr><th>까르네 발급 수수료 (회원)</th><th>금액</th></tr>
+                <tr><th>항목</th><th>구분</th><th>물품가액</th><th>수수료</th></tr>
               </thead>
               <tbody>
-                <tr><td>물품가액 5천만원 미만</td><td>132,000원</td></tr>
-                <tr><td>물품가액 5천만원 이상</td><td>143,000원</td></tr>
-                <tr><td>5억원 초과 방산물품</td><td>물품가액의 0.03%</td></tr>
-                <tr><td>분실 및 재발급</td><td>55,000원</td></tr>
+                <tr><td rowspan="4">기본료</td><td rowspan="2">회원</td><td>5천만원 미만</td><td>132,000원</td></tr>
+                <tr><td>5천만원 이상</td><td>143,000원</td></tr>
+                <tr><td rowspan="2">비회원</td><td>5천만원 미만</td><td>220,000원</td></tr>
+                <tr><td>5천만원 이상</td><td>231,000원</td></tr>
+                <tr><td rowspan="2">추가수수료</td><td>통관국가 1개국 추가시</td><td></td><td>11,000원</td></tr>
+                <tr><td>분실 및 재발급</td><td>회원·비회원</td><td>55,000원</td></tr>
               </tbody>
             </table>
           </div>
@@ -917,14 +932,14 @@
     <p class="section-sub">각 단계를 완료할 때마다 체크하며 진행 상황을 관리하세요. (체크 상태는 저장되지 않습니다)</p>
 
     <div class="checklist-progress">
-      <span id="progressLabel">0 / 5 완료</span>
+      <span id="progressLabel">0 / 8 완료</span>
       <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
     </div>
 
     <div class="checklist-card" id="checklistCard">
       <div class="checklist-item">
         <input type="checkbox" id="chk1">
-        <label for="chk1"><b>Step 1. 서류 작성</b>ATA 까르네 워드 양식 다운로드 및 작성 완료</label>
+        <label for="chk1"><b>Step 1. 보증보험 신청서류 작성</b>ATA 까르네 발급신청서(보험회사 신청용) 다운로드 및 작성 완료</label>
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk2">
@@ -932,7 +947,7 @@
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk3">
-        <label for="chk3"><b>Step 3. 까르네 발급 신청</b>대한상공회의소 발급 신청 완료 (전시회명 축약 기재 확인)</label>
+        <label for="chk3"><b>Step 3. 까르네 발급 신청</b>대한상공회의소 발급 신청 완료</label>
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk4">
@@ -940,9 +955,22 @@
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk5">
-        <label for="chk5"><b>Step 5. 방문 수령</b>접수증 출력 및 원산지증명센터 방문 수령 완료</label>
+        <label for="chk5"><b>Step 5.  까르네 수령</b> 우편 또는 방문수령(수수료 결제 후 익일 14시 이후부터 접수증 지참 후 방문 시 원본 수령 가능)</label>
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" id="chk6">
+        <label for="chk6"><b>까르네 이용 수출입 통관</b>각국 세관에서 까르네로 통관 진행</label>
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" id="chk7">
+        <label for="chk7"><b>이용완료 / 까르네 반납</b>상공회의소에 까르네 반납</label>
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" id="chk8">
+        <label for="chk8"><b>보증보험 환급</b>서울보증보험에 보증금 환급 신청</label>
       </div>
     </div>
+    <p class="section-sub" style="margin:10px 0 0;font-size:12px;">[출처] ATA 까르네 신청 방법 및 비용 / 위탁 수화물, 기내수화물(핸드캐리) 붙이는 방법 · 작성자 기리니</p>
   </section>
 
     </div>
