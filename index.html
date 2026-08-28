@@ -607,12 +607,12 @@
   <!-- 섹션 1: 기본 개요 -->
   <section id="overview">
     <div class="section-title"><span class="num">1</span>ATA CARNET 기본 개요</div>
-    <p class="section-sub">까르네가 무엇인지, 왜 필요한지 먼저 확인하세요.</p>
+  
 
     <div class="overview-grid">
       <button class="overview-card" type="button" data-modal-title="💡 ATA CARNET이란?" data-modal-content="carnetInfo" aria-haspopup="dialog" aria-controls="carnetModal">
         <h3>💡 ATA CARNET이란?</h3>
-        <p>해외 전시·출장 물품의 임시 관세 면제 통관 서류</p>
+        <p>까르네가 무엇인지, 왜 필요한지 먼저 확인하세요.</p>
       </button>
       <button class="overview-card" type="button" data-modal-title="🏢 주요 담당 기관" data-modal-content="institutionInfo" aria-haspopup="dialog" aria-controls="carnetModal">
         <h3>🏢 주요 담당 기관</h3>
@@ -846,7 +846,9 @@
   var activeOverviewButton;
 
   var modalContents = {
-    carnetInfo: '<p><strong>ATA CARNET(까르네)</strong>란 전시회 참가, 샘플 반출 등으로 물품을 해외에 <strong>임시로 수출입</strong>할 때 사용하는 국제 통관 서류입니다.</p><p>이 서류가 있으면 각국 세관에서 별도의 관세를 납부하거나 복잡한 통관 절차를 거치지 않고 물품을 반출하고 다시 반입할 수 있습니다.</p><p>전시회 핸드캐리 물품, 데모 장비, 샘플 등을 해외로 가지고 나갈 때 필요한 일종의 <strong>통관 여권</strong>이며, 출국 전에 미리 발급받아야 합니다.</p>',
+    carnetInfo: '<p>ATA협약 가입국 간에 <strong>일시적으로 물품을 수출입</strong>할 때 사용되는 담보증서입니다.  </p><p>ATA CARNET 이용 시 별도의 통관 서류나, 관세 및 부가세를 납부할 필요없이 신속하고 원활한 통관이 가능합니다.</p><p>  <strong>적용 가능 분야</strong> 1.상업견본(Commercial Samples) *바이어 상담.시연을 위한 샘플로 판매하지 않고 전량 반환하는 물품 </p><p>*새로 개발한 장비 및 반제품등을 해외 고객사에서 데모테스트 목적으로 일시 반출하는 물품</p>',</p><p> 2. 직업용구(professional equipment) *비즈니스 목적의 출장에 필요한 출장용품</p>,
+    </p><p> 3. 전시회.박람회(Exhibition and fairs) *국제 전시회.박람회 등에 출품.전시 후 반환하는 물품 *학술심포지움, 각종 발표회 등의 참가물품 등 *무역촉진단, 해외 수출상담회에 참가하는 기업의 일시반출 물품<p>전시회, 박람회, 컨벤션 등에서 전시 목적으로 반출하는 물품</p>
+    )
     institutionInfo: '<p><strong>대한상공회의소</strong><br>원산지증명센터</p><p>🌐 <a href="https://cert.korcham.net/" target="_blank" rel="noopener">cert.korcham.net</a><br>☎ 안양과천상공회의소 <a href="tel:0314479171">031-447-9171</a></p><p>🌐 <a href="https://www.sgic.co.kr/" target="_blank" rel="noopener">서울보증보험 www.sgic.co.kr</a><br>☎ 보증보험 담당자 <a href="tel:0260500021">02-6050-0021</a></p>',
     durationInfo: '<p><strong>일반 소요 기간</strong><br>서류 준비부터 까르네 수령까지 평균 2~3일이 소요됩니다.</p><p><strong>당일 진행 시</strong><br>모든 절차를 당일에 완료하려면 오후 6시 이전에 수수료 결제를 마쳐야 합니다.</p><p>출국 일정에 차질이 없도록 최소 1주일 이상의 여유를 두고 신청하는 것을 권장합니다.</p>'
   };
