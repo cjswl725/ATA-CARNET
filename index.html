@@ -186,6 +186,7 @@
 
   .overview-card--centered{
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
@@ -193,6 +194,25 @@
 
   .overview-card--centered h3{
     margin:0;
+  }
+
+  .overview-card-hint{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    margin-top:12px;
+    color:var(--navy-600);
+    font-size:12.5px;
+    font-weight:600;
+  }
+
+  .overview-card-hint span{
+    transition:transform .15s ease;
+  }
+
+  button.overview-card:hover .overview-card-hint span,
+  button.overview-card:focus-visible .overview-card-hint span{
+    transform:translateX(3px);
   }
 
   .overview-card p{
@@ -708,14 +728,17 @@
     <div class="overview-grid">
       <button class="overview-card overview-card--centered" type="button" data-modal-title="💡 ATA CARNET이란?" data-modal-content="carnetInfo" aria-haspopup="dialog" aria-controls="carnetModal">
         <h3>💡 ATA CARNET이란?</h3>
+        <span class="overview-card-hint">자세히 보기 <span aria-hidden="true">→</span></span>
       </button>
       <button class="overview-card" type="button" data-modal-title="🏢 주요 담당 기관" data-modal-content="institutionInfo" aria-haspopup="dialog" aria-controls="carnetModal">
         <h3>🏢 주요 담당 기관</h3>
         <p>대한상공회의소 (발급)<br>SGI 서울보증 (보증보험)</p>
+        <span class="overview-card-hint">자세히 보기 <span aria-hidden="true">→</span></span>
       </button>
       <button class="overview-card" type="button" data-modal-title="⏱ 예상 소요 기간" data-modal-content="durationInfo" aria-haspopup="dialog" aria-controls="carnetModal">
         <h3>⏱ 예상 소요 기간</h3>
         <p>평균 2~3일 소요<br>(당일 완결 시 18시 전 결제)</p>
+        <span class="overview-card-hint">자세히 보기 <span aria-hidden="true">→</span></span>
       </button>
     </div>
 
