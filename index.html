@@ -514,57 +514,109 @@
   }
   .modal-dialog{
     position:relative;
-    width:min(720px,100%);
+    width:min(680px,100%);
     max-height:min(720px,calc(100vh - 40px));
     overflow:auto;
     background:var(--white);
     border-radius:var(--radius);
-    padding:34px 38px;
+    padding:30px 34px;
     box-shadow:var(--shadow-lg);
   }
   .modal-dialog h2{
-    margin:0 40px 18px 0;
+    margin:0 40px 14px 0;
     color:var(--navy-900);
-    font-size:26px;
-  }
-  .modal-dialog p{
-    margin:0 0 14px;
-    color:var(--navy-800);
-    font-size:15.5px;
-  }
-  .modal-dialog p.modal-subtext{
-    margin-top:-8px;
-    color:var(--slate-500);
-    font-size:13.5px;
-  }
-  .modal-dialog p.modal-category{
-    margin:20px 0 8px;
-    color:var(--navy-900);
-    font-size:16px;
+    font-size:19px;
     font-weight:700;
   }
+  .modal-dialog p{
+    margin:0 0 10px;
+    color:var(--navy-800);
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  .modal-dialog p.modal-lead{
+    color:var(--navy-800);
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  .modal-dialog p.modal-subtext{
+    margin:-2px 0 16px;
+    color:var(--slate-500);
+    font-size:12px;
+    line-height:1.6;
+  }
+  .modal-dialog p.modal-eyebrow{
+    margin:18px 0 10px;
+    padding-top:14px;
+    border-top:1px solid var(--slate-100);
+    color:var(--navy-600);
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+  }
+  .modal-dialog p.modal-eyebrow:first-child{
+    margin-top:0;
+    padding-top:0;
+    border-top:0;
+  }
+  .modal-dialog .modal-category{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:14px 0 7px;
+  }
+  .modal-dialog .modal-category .badge{
+    flex:none;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:var(--navy-600);
+    color:var(--white);
+    font-size:10px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .modal-dialog .modal-category .label{
+    color:var(--navy-900);
+    font-size:13px;
+    font-weight:700;
+  }
+  .modal-dialog .modal-category .label span{
+    margin-left:4px;
+    color:var(--slate-500);
+    font-size:11px;
+    font-weight:500;
+  }
   .modal-dialog ul.modal-list{
-    margin:0 0 16px;
+    margin:0 0 4px;
     padding:0;
     list-style:none;
   }
   .modal-dialog ul.modal-list li{
     position:relative;
-    padding-left:16px;
-    color:var(--navy-800);
-    font-size:14px;
+    padding-left:14px;
+    color:var(--navy-700);
+    font-size:12.5px;
     line-height:1.55;
-    margin-bottom:6px;
+    margin-bottom:5px;
   }
   .modal-dialog ul.modal-list li::before{
     content:'';
     position:absolute;
     left:0;
     top:0.6em;
-    width:5px;
-    height:5px;
+    width:4px;
+    height:4px;
     border-radius:50%;
-    background:var(--navy-600);
+    background:var(--slate-500);
+  }
+  .modal-dialog .modal-org{
+    color:var(--navy-900);
+    font-size:13px;
+    font-weight:700;
   }
   .modal-close{
     position:absolute;
@@ -609,7 +661,7 @@
     .step-card{padding:16px 14px 16px 0;gap:12px;}
     .hero{padding:44px 16px 48px;}
     .modal-dialog{padding:28px 22px;}
-    .modal-dialog h2{font-size:22px;}
+    .modal-dialog h2{font-size:18px;}
   }
 </style>
 </head>
@@ -880,9 +932,9 @@
   var activeOverviewButton;
 
   var modalContents = {
-    carnetInfo: '<p>ATA협약 가입국 간에 <strong>일시적으로 물품을 수출입</strong>할 때 사용되는 담보증서입니다.</p><p class="modal-subtext">ATA CARNET 이용 시 별도의 통관 서류나, 관세 및 부가세를 납부할 필요없이 신속하고 원활한 통관이 가능합니다.</p><p><strong>적용 가능 분야</strong></p><p class="modal-category">1. 상업견본(Commercial Samples)</p><ul class="modal-list"><li>바이어 상담·시연을 위한 샘플로 판매하지 않고 전량 반환하는 물품</li><li>새로 개발한 장비 및 반제품 등을 해외 고객사에서 데모테스트 목적으로 일시 반출하는 물품</li></ul><p class="modal-category">2. 직업용구(Professional Equipment)</p><ul class="modal-list"><li>비즈니스 목적의 출장에 필요한 출장용품</li></ul><p class="modal-category">3. 전시회·박람회(Exhibition and Fairs)</p><ul class="modal-list"><li>국제 전시회·박람회 등에 출품·전시 후 반환하는 물품</li><li>학술심포지엄, 각종 발표회 등의 참가물품</li><li>무역촉진단, 해외 수출상담회에 참가하는 기업의 일시반출 물품</li><li>전시회, 박람회, 컨벤션 등에서 전시 목적으로 반출하는 물품</li></ul>',
-    institutionInfo: '<p><strong>대한상공회의소</strong><br>원산지증명센터</p><p>🌐 <a href="https://cert.korcham.net/" target="_blank" rel="noopener">cert.korcham.net</a><br>☎ 안양과천상공회의소 <a href="tel:0314479171">031-447-9171</a></p><p>🌐 <a href="https://www.sgic.co.kr/" target="_blank" rel="noopener">서울보증보험 www.sgic.co.kr</a><br>☎ 보증보험 담당자 <a href="tel:0260500021">02-6050-0021</a></p>',
-    durationInfo: '<p><strong>일반 소요 기간</strong><br>서류 준비부터 까르네 수령까지 평균 2~3일이 소요됩니다.</p><p><strong>당일 진행 시</strong><br>모든 절차를 당일에 완료하려면 오후 6시 이전에 수수료 결제를 마쳐야 합니다.</p><p>출국 일정에 차질이 없도록 최소 1주일 이상의 여유를 두고 신청하는 것을 권장합니다.</p>'
+    carnetInfo: '<p class="modal-lead">ATA협약 가입국 간에 <strong>일시적으로 물품을 수출입</strong>할 때 사용되는 담보증서입니다.</p><p class="modal-subtext">별도의 통관 서류나 관세·부가세 납부 없이 신속하고 원활한 통관이 가능합니다.</p><p class="modal-eyebrow">적용 가능 분야</p><div class="modal-category"><span class="badge">1</span><span class="label">상업견본<span>Commercial Samples</span></span></div><ul class="modal-list"><li>바이어 상담·시연을 위한 샘플로 판매하지 않고 전량 반환하는 물품</li><li>새로 개발한 장비 및 반제품 등을 해외 고객사에서 데모테스트 목적으로 일시 반출하는 물품</li></ul><div class="modal-category"><span class="badge">2</span><span class="label">직업용구<span>Professional Equipment</span></span></div><ul class="modal-list"><li>비즈니스 목적의 출장에 필요한 출장용품</li></ul><div class="modal-category"><span class="badge">3</span><span class="label">전시회·박람회<span>Exhibition and Fairs</span></span></div><ul class="modal-list"><li>국제 전시회·박람회 등에 출품·전시 후 반환하는 물품</li><li>학술심포지엄, 각종 발표회 등의 참가물품</li><li>무역촉진단, 해외 수출상담회에 참가하는 기업의 일시반출 물품</li><li>전시회, 박람회, 컨벤션 등에서 전시 목적으로 반출하는 물품</li></ul>',
+    institutionInfo: '<div class="modal-category"><span class="label">대한상공회의소<span>원산지증명센터</span></span></div><p>🌐 <a href="https://cert.korcham.net/" target="_blank" rel="noopener">cert.korcham.net</a><br>☎ 안양과천상공회의소 <a href="tel:0314479171">031-447-9171</a></p><p class="modal-eyebrow">보증보험</p><div class="modal-category"><span class="label">SGI 서울보증<span>서울보증보험</span></span></div><p>🌐 <a href="https://www.sgic.co.kr/" target="_blank" rel="noopener">www.sgic.co.kr</a><br>☎ 보증보험 담당자 <a href="tel:0260500021">02-6050-0021</a></p>',
+    durationInfo: '<div class="modal-category"><span class="label">일반 소요 기간</span></div><p>서류 준비부터 까르네 수령까지 평균 2~3일이 소요됩니다.</p><div class="modal-category"><span class="label">당일 진행 시</span></div><p>모든 절차를 당일에 완료하려면 오후 6시 이전에 수수료 결제를 마쳐야 합니다.</p><p class="modal-subtext">출국 일정에 차질이 없도록 최소 1주일 이상의 여유를 두고 신청하는 것을 권장합니다.</p>'
   };
 
   function closeCarnetModal() {
