@@ -450,18 +450,30 @@
   }
   .checklist-links{
     display:flex;
-    gap:10px;
+    gap:8px;
     margin-left:auto;
-    padding-top:2px;
+    flex-wrap:wrap;
     flex-shrink:0;
   }
   .checklist-links a{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    background:var(--slate-50);
+    border:1px solid var(--slate-300);
+    border-radius:999px;
+    padding:5px 12px;
     color:var(--navy-700);
-    font-size:12.5px;
+    font-size:12px;
     font-weight:600;
     white-space:nowrap;
   }
-  .checklist-links a:hover{text-decoration:underline;}
+  .checklist-links a:hover{
+    background:var(--navy-700);
+    border-color:var(--navy-700);
+    color:var(--white);
+    text-decoration:none;
+  }
   .checklist-item:last-child{border-bottom:none;}
   .checklist-item input[type="checkbox"]{
     width:20px;
@@ -779,12 +791,12 @@
 <main class="container">
   <div class="main-layout">
     <nav class="quick-nav" aria-label="빠른 이동">
-      <a href="#overview">개요</a>
-      <a href="#step1"> 1. 서류 작성</a>
-      <a href="#step2"> 2. 전자서명 &amp; 결제</a>
-      <a href="#step3"> 3. 까르네 발급 신청</a>
-      <a href="#step4"> 4. 수수료 결제</a>
-      <a href="#step5"> 5. 방문 수령</a>
+      <a href="#overview">1. 개요</a>
+      <a href="#step1"> 2. 서류 작성</a>
+      <a href="#step2"> 3. 전자서명 &amp; 결제</a>
+      <a href="#step3"> 4. 까르네 발급 신청</a>
+      <a href="#step4"> 5. 수수료 결제</a>
+      <a href="#step5"> 6. 방문 수령</a>
       <a href="#checklist">체크리스트</a>
     </nav>
 
@@ -951,18 +963,18 @@
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk4">
-        <label for="chk4"><b>Step 4. 수수료 결제</b>승인 후 24시간 이내, 오후 6시 이전 수수료 결제 완료</label>
+        <label for="chk4"><b>Step 4. 수수료 결제</b>승인 후 24시간 이내 결제</label>
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk5">
-        <label for="chk5"><b>Step 5.  까르네 수령</b> 우편 또는 방문수령(수수료 결제 후 익일 14시 이후부터 접수증 지참 후 방문 시 원본 수령 가능)</label>
+        <label for="chk5"><b>Step 5.  까르네 수령</b> 우편 또는 방문수령</label>
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk6">
         <label for="chk6"><b>Step 6. 까르네 이용 수출입 통관</b>각국 세관에서 까르네로 통관 진행</label>
         <div class="checklist-links">
-          <a href="https://cert.korcham.net/resources/ebook/ecatalogm.html" target="_blank" rel="noopener">가이드</a>
-          <a href="https://cert.korcham.net/html/carnet/03/carnetSamplePopup.htm" target="_blank" rel="noopener">양식 견본</a>
+          <a href="https://cert.korcham.net/resources/ebook/ecatalogm.html" target="_blank" rel="noopener">📖 까르네 사용자 가이드</a>
+          <a href="https://cert.korcham.net/html/carnet/03/carnetSamplePopup.htm" target="_blank" rel="noopener">📄 까르네 증서 SET견본</a>
         </div>
       </div>
       <div class="checklist-item">
