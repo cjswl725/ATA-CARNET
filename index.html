@@ -56,7 +56,7 @@
   .site-header{
     position:relative;
     z-index:1;
-    padding:20px 0;
+    padding:14px 0;
   }
   .site-header .container{
     display:flex;
@@ -85,18 +85,18 @@
     position:relative;
     z-index:1;
     color:var(--white);
-    padding:52px 20px 64px;
+    padding:36px 20px 40px;
     text-align:center;
   }
   .hero h1{
     font-size:clamp(24px,4vw,38px);
-    margin:0 0 14px;
+    margin:0 0 12px;
     font-weight:800;
     letter-spacing:-0.5px;
   }
   .hero p{
-    color:var(--slate-300);
-    font-size:15px;
+    color:rgba(226,232,240,0.75);
+    font-size:13.5px;
     max-width:680px;
     margin:0 auto;
     word-break:keep-all;
@@ -496,12 +496,6 @@
     padding:28px 20px;
     font-size:13px;
   }
-  footer .foot-logo{
-    color:var(--white);
-    font-weight:700;
-    margin-bottom:6px;
-    font-size:14px;
-  }
 
   /* Back to top */
   #backToTop{
@@ -711,7 +705,7 @@
     section{padding:40px 0;}
     .section-title{font-size:21px;}
     .step-card{padding:16px 14px;}
-    .hero{padding:44px 16px 48px;}
+    .hero{padding:32px 16px 36px;}
     .modal-dialog{padding:28px 22px;}
     .modal-dialog h2{font-size:18px;}
   }
@@ -978,7 +972,7 @@
   var modalContents = {
     carnetInfo: '<p class="modal-lead">ATA협약 가입국 간에 <strong>일시적으로 물품을 수출입</strong>할 때 사용되는 담보증서입니다.</p><p class="modal-subtext">별도의 통관 서류나 관세·부가세 납부 없이 해당 증서로 통관이 가능합니다.</p><p class="modal-eyebrow">적용 가능 분야</p><div class="modal-category"><span class="badge">1</span><span class="label">상업견본<span>Commercial Samples</span></span></div><ul class="modal-list"><li>바이어 상담·시연을 위한 샘플로 판매하지 않고 전량 반환하는 물품</li><li>새로 개발한 장비 및 반제품 등을 해외 고객사에서 데모테스트 목적으로 일시 반출하는 물품</li></ul><div class="modal-category"><span class="badge">2</span><span class="label">직업용구<span>Professional Equipment</span></span></div><ul class="modal-list"><li>비즈니스 목적의 출장에 필요한 출장용품</li></ul><div class="modal-category"><span class="badge">3</span><span class="label">전시회·박람회<span>Exhibition and Fairs</span></span></div><ul class="modal-list"><li>국제 전시회·박람회 등에 출품·전시 후 반환하는 물품</li><li>학술심포지엄, 각종 발표회 등의 참가물품</li><li>무역촉진단, 해외 수출상담회에 참가하는 기업의 일시반출 물품</li><li>전시회, 박람회, 컨벤션 등에서 전시 목적으로 반출하는 물품</li></ul><p class="modal-eyebrow">적용 불가 물품</p><div class="modal-category"><span class="badge badge--danger">1</span><span class="label">소모성·1회성 물품</span></div><ul class="modal-list"><li>재반출 없이 소비·소모되는 물품, 카탈로그·전단지 등 인쇄물, 사은품·기부용 물품</li></ul><div class="modal-category"><span class="badge badge--danger">2</span><span class="label">위험물·규제 품목</span></div><ul class="modal-list"><li>전략물자·이중용도(Dual-use) 품목, 통신·보안장비 등 수입국 규제 품목은 국가별 수입허가 없이 사용 제한 — 사전 확인 필수</li></ul><div class="modal-category"><span class="badge badge--danger">3</span><span class="label">가공·수리·개조 목적 물품</span></div><ul class="modal-list"><li>해외에서 가공·수리·조립·개조로 상태가 변경되는 물품, 반제품 상태로 반출해 현지에서 완성 후 재반입하는 물품</li></ul><div class="modal-category"><span class="badge badge--danger">4</span><span class="label">판매 목적 물품</span></div><ul class="modal-list"><li>전시 후 판매·현지 처분 예정 물품, 적정 수량을 초과하는 상업 샘플</li></ul><div class="modal-category"><span class="badge badge--danger">5</span><span class="label">직업용구로 불인정되는 물품</span></div><ul class="modal-list"><li>반출인이 직접 사용하는 장비만 인정 — 제조·생산·건설 설비, 현지 영업활동용 설비는 제외</li></ul>',
     institutionInfo: '<div class="modal-category"><span class="label">대한상공회의소<span>원산지증명센터</span></span></div><p>🌐 <a href="https://cert.korcham.net/" target="_blank" rel="noopener">cert.korcham.net</a><br>☎ 안양과천상공회의소 <a href="tel:0314479171">031-447-9171</a></p><p class="modal-eyebrow">보증보험</p><div class="modal-category"><span class="label">SGI 서울보증<span>서울보증보험</span></span></div><p>🌐 <a href="https://www.sgic.co.kr/" target="_blank" rel="noopener">www.sgic.co.kr</a><br>☎ 보증보험 담당자 <a href="tel:0260500021">02-6050-0021</a></p>',
-    durationInfo: '<div class="modal-category"><span class="label">일반 진행 시</span></div><p class="modal-lead">기본적으로 <strong>출국일 기준 약 2주정도</strong> 기간을 두고 미리 준비하시기 바랍니다.</p><ul class="modal-list"><li>서류 준비 및 발급 절차 — 영업일 기준 5일 소요</li><li>우편 수령 — 약 1주일 소요</li></ul><div class="modal-category"><span class="label">긴급진행 시</span></div><p>※ 불가피하게 <strong>긴급진행</strong> 필요 시, <strong>최소 출국일 기준 일주일 전</strong> 진행 필요, CARNET 증서는 상공회의소 <strong>방문 수령 필수</strong>.</p>'
+    durationInfo: '<p class="modal-lead">기본적으로 출국일 기준 약 2주정도 기간을 두고 미리 준비하시기 바랍니다.</p><ul class="modal-list"><li>서류 준비 및 발급 절차 : 영업일 기준 5일 소요</li><li>우편 수령 : 약 1주일 소요</li></ul><p>※ 불가피하게 긴급진행 필요 시, 최소 출국일 기준 일주일 전 진행 필요.<br>CARNET 증서는 상공회의소 방문 수령 필수.</p>'
   };
 
   function closeCarnetModal() {
