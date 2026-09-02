@@ -144,6 +144,66 @@
     color:var(--white);
   }
 
+  .quick-nav-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:6px;
+    width:100%;
+    background:var(--white);
+    border:1px solid var(--slate-300);
+    color:var(--navy-800);
+    font:inherit;
+    font-size:12.5px;
+    font-weight:600;
+    line-height:1.4;
+    padding:10px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:all .15s ease;
+    text-align:left;
+  }
+  .quick-nav-toggle:hover{
+    background:var(--navy-700);
+    border-color:var(--navy-700);
+    color:var(--white);
+  }
+  .quick-nav-toggle .chevron{
+    flex-shrink:0;
+    transition:transform .15s ease;
+  }
+  .quick-nav-toggle[aria-expanded="true"] .chevron{
+    transform:rotate(180deg);
+  }
+  .quick-nav-sub{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin-left:6px;
+    padding-left:10px;
+    border-left:2px solid var(--slate-300);
+  }
+  .quick-nav-sub[hidden]{
+    display:none;
+  }
+  .quick-nav-sub a{
+    display:block;
+    background:var(--slate-50);
+    border:1px solid var(--slate-300);
+    color:var(--slate-500);
+    font-size:11.5px;
+    font-weight:600;
+    padding:7px 10px;
+    border-radius:6px;
+    text-decoration:none;
+    transition:all .15s ease;
+  }
+  .quick-nav-sub a:hover{
+    background:var(--navy-700);
+    border-color:var(--navy-700);
+    color:var(--white);
+  }
+
   section{
     padding:56px 0;
   }
@@ -772,6 +832,16 @@
       padding:24px 0 0;
     }
     .quick-nav a{font-size:13px;padding:9px 12px;}
+    .quick-nav-toggle{font-size:13px;padding:9px 12px;width:auto;}
+    .quick-nav-sub{
+      flex-direction:row;
+      flex-wrap:wrap;
+      width:100%;
+      margin-left:0;
+      padding-left:0;
+      border-left:none;
+    }
+    .quick-nav-sub a{font-size:12px;padding:7px 10px;}
     .overview-grid{grid-template-columns:1fr;}
     section{padding:40px 0;}
     .section-title{font-size:21px;}
@@ -805,16 +875,21 @@
   <div class="main-layout">
     <nav class="quick-nav" aria-label="빠른 이동">
       <a href="#overview">1. 개요</a>
-      <a href="#step0">2. 단계별 프로세스</a>
-      <a href="#step1">3. 서류 작성</a>
-      <a href="#step2">4. 전자서명 &amp; 결제</a>
-      <a href="#step3">5. 예산집행/지출결의</a>
-      <a href="#step4">6. 까르네 발급 신청</a>
-      <a href="#step5">7. 수수료 결제</a>
-      <a href="#step6">8. 까르네 수령</a>
-      <a href="#step7">9. 통관 진행</a>
-      <a href="#step8">10. 까르네 반납</a>
-      <a href="#step9">11. 보증보험 환급</a>
+      <button type="button" class="quick-nav-toggle" id="stepNavToggle" aria-expanded="false" aria-controls="stepSubNav">
+        <span>2. 단계별 프로세스</span><span class="chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="quick-nav-sub" id="stepSubNav" hidden>
+        <a href="#step0">STEP 0. 사전 프로세스</a>
+        <a href="#step1">STEP 1. 서류 작성</a>
+        <a href="#step2">STEP 2. 전자서명 &amp; 결제</a>
+        <a href="#step3">STEP 3. 예산집행/지출결의</a>
+        <a href="#step4">STEP 4. 까르네 발급 신청</a>
+        <a href="#step5">STEP 5. 수수료 결제</a>
+        <a href="#step6">STEP 6. 까르네 수령</a>
+        <a href="#step7">STEP 7. 통관 진행</a>
+        <a href="#step8">STEP 8. 까르네 반납</a>
+        <a href="#step9">STEP 9. 보증보험 환급</a>
+      </div>
       <a href="#checklist">3. 체크리스트</a>
     </nav>
 
@@ -943,7 +1018,7 @@
       <div class="step-card" id="step3">
         <div class="step-body">
           <h3><span class="step-tag">STEP 3</span><span class="owner-badge owner-badge--dept">요청부서</span>예산집행품의 / 지출결의서 상신</h3>
-          <p class="desc">보증보험료 결제 건에 대한 예산집행품의 및 지출결의서를 상신합니다.</p>
+          <p class="desc">보증보험료 영수증 수령 후 예산집행품의 및 지출결의서를 상신합니다.</p>
         </div>
       </div>
 
@@ -1112,6 +1187,15 @@
 <button id="backToTop" aria-label="맨 위로 이동" title="맨 위로 이동">↑</button>
 
 <script>
+  // Quick-nav step submenu toggle
+  var stepNavToggle = document.getElementById('stepNavToggle');
+  var stepSubNav = document.getElementById('stepSubNav');
+  stepNavToggle.addEventListener('click', function () {
+    var expanded = stepNavToggle.getAttribute('aria-expanded') === 'true';
+    stepNavToggle.setAttribute('aria-expanded', String(!expanded));
+    stepSubNav.hidden = expanded;
+  });
+
   // Back to top button
   var backToTopBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', function () {
