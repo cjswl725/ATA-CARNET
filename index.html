@@ -370,6 +370,23 @@
   }
   .fee-table tr:first-child td{border-top:none;}
 
+  .req-table td{text-align:left;}
+  .req-table td.cat{
+    font-weight:700;
+    background:var(--slate-100);
+    white-space:nowrap;
+    text-align:left;
+  }
+  .req-table td.num{
+    text-align:center;
+    color:var(--slate-500);
+    white-space:nowrap;
+  }
+  .req-note{
+    color:var(--slate-500);
+    font-size:11.5px;
+  }
+
   .flow-box{
     background:var(--slate-50);
     border:1px dashed var(--slate-300);
@@ -768,12 +785,13 @@
   <div class="main-layout">
     <nav class="quick-nav" aria-label="빠른 이동">
       <a href="#overview">1. 개요</a>
-      <a href="#step1">2. 서류 작성</a>
-      <a href="#step2">3. 전자서명 &amp; 결제</a>
-      <a href="#step3">4. 까르네 발급 신청</a>
-      <a href="#step4">5. 수수료 결제</a>
-      <a href="#step5">6. 방문 수령</a>
-      <a href="#checklist">7. 체크리스트</a>
+      <a href="#step0">2. 사전 프로세스</a>
+      <a href="#step1">3. 서류 작성</a>
+      <a href="#step2">4. 전자서명 &amp; 결제</a>
+      <a href="#step3">5. 까르네 발급 신청</a>
+      <a href="#step4">6. 수수료 결제</a>
+      <a href="#step5">7. 방문 수령</a>
+      <a href="#checklist">8. 체크리스트</a>
     </nav>
 
     <div class="content-column">
@@ -805,6 +823,39 @@
     <div class="section-title"><span class="num">2</span>단계별 진행 매뉴얼</div>
 
     <div class="timeline">
+
+      <!-- Step 0 -->
+      <div class="step-card" id="step0">
+        <div class="step-body">
+          <h3><span class="step-tag">STEP 0</span>유관부서 사전 프로세스 및 요청정보 전달</h3>
+          <p class="desc">까르네 통관 진행이 필요한 담당자는 아래 사전 절차를 완료한 뒤, 요청정보를 정리하여 영업관리팀에 이메일로 전달합니다.</p>
+          <div class="flow-box">
+            <div class="flow-title">[유관부서 사전 확인 절차]</div>
+            <div class="flow-steps">
+              <span class="node">1. 수출품에 대한 수입국별 요건, 규제사항 및 인허가 여부 등 RA팀과 사전확인 必 </span><span class="arrow">→</span>
+              <span class="node">2. (미인허가 제품인 경우) 시제품 제작의뢰서 작성</span><span class="arrow">→</span>
+              <span class="node">3. 영업관리팀에 요청정보 정리 후 메일 발송 (필수 전달 항목 하기 참조)</span>
+            </div>
+          </div>
+          <div class="fee-table-wrap">
+            <table class="fee-table req-table">
+              <thead>
+                <tr><th style="width:110px">구분</th><th style="width:36px">#</th><th>항목</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="cat" rowspan="2">기본정보</td><td class="num">1</td><td>까르네 발급 목적 — 상업견본 / 직업용구 / 전시회·박람회 중 택1</td></tr>
+                <tr><td class="num">2</td><td>출장 일정</td></tr>
+                <tr><td class="cat" rowspan="2">인허가 · 내부품의</td><td class="num">3</td><td>RA팀과 인허가 확인 여부 <strong>(O/X)</strong></td></tr>
+                <tr><td class="num">4</td><td>(미인허가 제품의 경우) 시제품 제작의뢰서 작성 여부 <strong>(O/X)</strong></td></tr>
+                <tr><td class="cat">물품정보</td><td class="num">5</td><td>제품명 / Description / 수량 / 물품가액 / 원산지</td></tr>
+                <tr><td class="cat">전시정보</td><td class="num">6</td><td>전시명 / 전시장소 / 전시기간<br><span class="req-note">※ 1번 목적이 '전시회·박람회'인 경우에만 작성</span></td></tr>
+                <tr><td class="cat">까르네 사용자 정보</td><td class="num">7</td><td>통관 담당자 성명(국문) / 여권 영문명</td></tr>
+                <tr><td class="cat">까르네 수령 방식</td><td class="num">8</td><td>우편 또는 방문수령 중 택1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
       <!-- Step 1 -->
       <div class="step-card" id="step1">
