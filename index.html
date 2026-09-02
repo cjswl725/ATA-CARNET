@@ -290,6 +290,31 @@
     vertical-align:middle;
     letter-spacing:0.5px;
   }
+  .owner-badge{
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    padding:2px 9px;
+    border-radius:6px;
+    margin-right:8px;
+    vertical-align:middle;
+    letter-spacing:0.3px;
+  }
+  .owner-badge--dept{
+    background:#fef3c7;
+    color:#b45309;
+    border:1px solid #fcd34d;
+  }
+  .owner-badge--sales{
+    background:var(--slate-100);
+    color:var(--slate-500);
+    border:1px solid var(--slate-300);
+  }
+  .checklist-item .owner-badge{
+    margin-left:auto;
+    margin-right:0;
+    flex-shrink:0;
+  }
   .step-body ul{
     margin:0 0 12px;
     padding-left:20px;
@@ -375,7 +400,7 @@
     font-weight:700;
     background:var(--slate-100);
     white-space:nowrap;
-    text-align:left;
+    text-align:center;
   }
   .req-table td.num{
     text-align:center;
@@ -785,13 +810,17 @@
   <div class="main-layout">
     <nav class="quick-nav" aria-label="빠른 이동">
       <a href="#overview">1. 개요</a>
-      <a href="#step0">2. 사전 프로세스</a>
+      <a href="#step0">2. 단ㄱ 프로세스</a>
       <a href="#step1">3. 서류 작성</a>
       <a href="#step2">4. 전자서명 &amp; 결제</a>
-      <a href="#step3">5. 까르네 발급 신청</a>
-      <a href="#step4">6. 수수료 결제</a>
-      <a href="#step5">7. 방문 수령</a>
-      <a href="#checklist">8. 체크리스트</a>
+      <a href="#step3">5. 예산집행/지출결의</a>
+      <a href="#step4">6. 까르네 발급 신청</a>
+      <a href="#step5">7. 수수료 결제</a>
+      <a href="#step6">8. 까르네 수령</a>
+      <a href="#step7">9. 통관 진행</a>
+      <a href="#step8">10. 까르네 반납</a>
+      <a href="#step9">11. 보증보험 환급</a>
+      <a href="#checklist">3. 체크리스트</a>
     </nav>
 
     <div class="content-column">
@@ -827,20 +856,18 @@
       <!-- Step 0 -->
       <div class="step-card" id="step0">
         <div class="step-body">
-          <h3><span class="step-tag">STEP 0</span>유관부서 사전 프로세스 및 요청정보 전달</h3>
+          <h3><span class="step-tag">STEP 0</span><span class="owner-badge owner-badge--dept">요청부서</span>유관부서 사전 프로세스 및 요청정보 전달</h3>
           <p class="desc">까르네 통관 진행이 필요한 담당자는 아래 사전 절차를 완료한 뒤, 요청정보를 정리하여 영업관리팀에 이메일로 전달합니다.</p>
-          <div class="flow-box">
-            <div class="flow-title">[유관부서 사전 확인 절차]</div>
-            <div class="flow-steps">
-              <span class="node">1. 수출품에 대한 수입국별 요건, 규제사항 및 인허가 여부 등 RA팀과 사전확인 必 </span><span class="arrow">→</span>
-              <span class="node">2. (미인허가 제품인 경우) 시제품 제작의뢰서 작성</span><span class="arrow">→</span>
-              <span class="node">3. 영업관리팀에 요청정보 정리 후 메일 발송 (필수 전달 항목 하기 참조)</span>
-            </div>
-          </div>
+          <ul>
+            <li>1. 수출 물품에 대해 수입국 별 인허가 및 규제사항 등 RA팀과 사전확인 必</li>
+            <li>2. (미인허가 제품인 경우) 시제품 제작의뢰서 품의 상신 </li>
+            <li>3. 영업관리팀에 요청정보 정리 후 메일 발송 (하기 필수 전달사항 참조)</li>
+            <li>4. 각 단계 별 진행 필요 건 F/up </li>
+          </ul>
           <div class="fee-table-wrap">
             <table class="fee-table req-table">
               <thead>
-                <tr><th style="width:110px">구분</th><th style="width:36px">#</th><th>항목</th></tr>
+                <tr><th style="width:170px">구분</th><th style="width:36px">#</th><th>항목</th></tr>
               </thead>
               <tbody>
                 <tr><td class="cat" rowspan="2">기본정보</td><td class="num">1</td><td>까르네 발급 목적 — 상업견본 / 직업용구 / 전시회·박람회 중 택1</td></tr>
@@ -860,7 +887,7 @@
       <!-- Step 1 -->
       <div class="step-card" id="step1">
         <div class="step-body">
-          <h3><span class="step-tag">STEP 1</span>보증보험 신청서류 작성</h3>
+          <h3><span class="step-tag">STEP 1</span><span class="owner-badge owner-badge--sales">영업관리팀</span>보증보험 신청서류 작성</h3>
           <p class="desc">1. 대한상공회의소 홈페이지의 양식 및 견본 탭에서 <strong>ATA 까르네 발급신청서(보험회사 신청용)</strong>을 작성합니다.</p>
           <div class="info-box">
             <div class="info-title">보증보험 담보금액 기준</div>
@@ -901,7 +928,7 @@
       <!-- Step 2 -->
       <div class="step-card" id="step2">
         <div class="step-body">
-          <h3><span class="step-tag">STEP 2</span>보증보험 전자서명 및 결제</h3>
+          <h3><span class="step-tag">STEP 2</span><span class="owner-badge owner-badge--sales">영업관리팀</span>보증보험 전자서명 및 결제</h3>
           <p class="desc">보증보험 승인 메일 수령 시, 서울보증보험 홈페이지에서 전자서명 및 보험료 결제를 진행합니다.</p>
           <div class="flow-box">
             <div class="flow-title">[SGI 서울보증 - 홈페이지 전자서명 절차 안내]</div>
@@ -911,8 +938,7 @@
               <span class="node">가입</span><span class="arrow">→</span>
               <span class="node">보험계약 전자서명</span><span class="arrow">→</span>
               <span class="node">승인된 증권번호 클릭 후 전자서명 진행</span><span class="arrow">→</span>
-              <span class="node">보험료 결제</span><span class="arrow">→</span>
-              <span class="node">예산집행품의/지출결의서 상신</span>
+              <span class="node">보험료 결제</span>
             </div>
           </div>
         </div>
@@ -921,7 +947,15 @@
       <!-- Step 3 -->
       <div class="step-card" id="step3">
         <div class="step-body">
-          <h3><span class="step-tag">STEP 3</span>대한상공회의소 까르네 발급 신청</h3>
+          <h3><span class="step-tag">STEP 3</span><span class="owner-badge owner-badge--dept">요청부서</span>예산집행품의 / 지출결의서 상신</h3>
+          <p class="desc">보증보험료 결제 건에 대한 예산집행품의 및 지출결의서를 상신합니다.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card" id="step4">
+        <div class="step-body">
+          <h3><span class="step-tag">STEP 4</span><span class="owner-badge owner-badge--sales">영업관리팀</span>대한상공회의소 까르네 발급 신청</h3>
           <p class="desc">보증보험 절차 완료 후 대한상공회의소 홈페이지에서 까르네 발급을 신청합니다.</p>
           <div class="flow-box">
             <div class="flow-title">[대한상공회의소 - 까르네 발급 신청 절차 안내]</div>
@@ -937,10 +971,10 @@
         </div>
       </div>
 
-      <!-- Step 4 -->
-      <div class="step-card" id="step4">
+      <!-- Step 5 -->
+      <div class="step-card" id="step5">
         <div class="step-body">
-          <h3><span class="step-tag">STEP 4</span>수수료 결제</h3>
+          <h3><span class="step-tag">STEP 5</span><span class="owner-badge owner-badge--sales">영업관리팀</span>수수료 결제</h3>
           <p class="desc">발급 신청이 승인되면 수수료를 결제합니다.</p>
           <ul>
             <li>승인 후 <strong>24시간 이내 미결제 시 승인이 자동 취소</strong>됩니다.</li>
@@ -968,12 +1002,40 @@
         </div>
       </div>
 
-      <!-- Step 5 -->
-      <div class="step-card" id="step5">
+      <!-- Step 6 -->
+      <div class="step-card" id="step6">
         <div class="step-body">
-          <h3><span class="step-tag">STEP 5</span>까르네 수령(우편 또는 방문)</h3>
-          <p class="desc"><strong>[방문수령]</strong> 마이페이지에서 접수증을 출력하거나 사진으로 찍은 후 결제일 다음날 오후 14:00 이후 까르네 신청 상공회의소로 방문하여 원본을 수령합니다.</p>
+          <h3><span class="step-tag">STEP 6</span><span class="owner-badge owner-badge--dept">요청부서</span>까르네 수령(우편 또는 방문)</h3>
+          <p class="desc"><strong>[방문수령]</strong> 마이페이지에서 접수증을 출력하거나 사진으로 찍은 후 결제일 다음날 오후 14:00 이후 까르네 신청 상공회의소로 방문하여 원본을 수령합니다. (신청한 상의에서만 수령이 가능합니다.)</p>
           <p class="desc"><strong>[우편수령]</strong> 결제일 다음날 오후에 일괄 발송되므로 결제 후 까르네 원본을 수령하기까지 최대 일주일 정도 소요될 수 있습니다.</p>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="step-card" id="step7">
+        <div class="step-body">
+          <h3><span class="step-tag">STEP 7</span><span class="owner-badge owner-badge--dept">요청부서</span>까르네 이용 수출입 통관</h3>
+          <p class="desc">각국 세관에서 까르네 증서를 제시하고 통관을 진행합니다.</p>
+          <div class="checklist-links">
+            <a href="https://cert.korcham.net/resources/ebook/ecatalogm.html" target="_blank" rel="noopener">📖 까르네 사용자 가이드</a>
+            <a href="https://cert.korcham.net/html/carnet/03/carnetSamplePopup.htm" target="_blank" rel="noopener">📄 까르네 증서 SET견본</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 8 -->
+      <div class="step-card" id="step8">
+        <div class="step-body">
+          <h3><span class="step-tag">STEP 8</span><span class="owner-badge owner-badge--dept">요청부서</span>이용완료 / 까르네 반납</h3>
+          <p class="desc">사용 완료된 까르네 원본을 상공회의소에 반납합니다.</p>
+        </div>
+      </div>
+
+      <!-- Step 9 -->
+      <div class="step-card" id="step9">
+        <div class="step-body">
+          <h3><span class="step-tag">STEP 9</span><span class="owner-badge owner-badge--dept">요청부서</span>보증보험 환급</h3>
+          <p class="desc">서울보증보험에 보증금 환급을 신청합니다.</p>
         </div>
       </div>
 
@@ -982,50 +1044,64 @@
 
   <!-- 섹션 3: 체크리스트 -->
   <section id="checklist">
-    <div class="section-title"><span class="num">✔</span>진행 체크리스트</div>
+    <div class="section-title"><span class="num">3</span>진행 체크리스트</div>
     <p class="section-sub">각 단계를 완료할 때마다 체크하며 진행 상황을 관리하세요. (체크 상태는 저장되지 않습니다)</p>
 
     <div class="checklist-progress">
-      <span id="progressLabel">0 / 8 완료</span>
+      <span id="progressLabel">0 / 10 완료</span>
       <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
     </div>
 
     <div class="checklist-card" id="checklistCard">
       <div class="checklist-item">
+        <input type="checkbox" id="chk0">
+        <label for="chk0"><b>Step 0. 유관부서 사전 프로세스 및 요청정보 전달</b>사전 확인 절차 완료 및 요청정보 영업관리팀 전달 완료</label>
+        <span class="owner-badge owner-badge--dept">요청부서</span>
+      </div>
+      <div class="checklist-item">
         <input type="checkbox" id="chk1">
         <label for="chk1"><b>Step 1. 보증보험 신청서류 작성</b>ATA 까르네 발급신청서(보험회사 신청용) 다운로드 및 작성 완료</label>
+        <span class="owner-badge owner-badge--sales">영업관리팀</span>
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk2">
         <label for="chk2"><b>Step 2. 전자서명 &amp; 결제</b>SGI 서울보증보험 전자서명 및 보험료 결제 완료</label>
+        <span class="owner-badge owner-badge--sales">영업관리팀</span>
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk3">
-        <label for="chk3"><b>Step 3. 까르네 발급 신청</b>대한상공회의소 발급 신청 완료</label>
+        <label for="chk3"><b>Step 3. 예산집행품의 / 지출결의서 상신</b>보증보험료 결제 건 예산집행품의 및 지출결의서 상신 완료</label>
+        <span class="owner-badge owner-badge--dept">요청부서</span>
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk4">
-        <label for="chk4"><b>Step 4. 수수료 결제(리브스메드는 회원가)</b>승인 후 24시간 이내 결제</label>
+        <label for="chk4"><b>Step 4. 까르네 발급 신청</b>대한상공회의소 발급 신청 완료</label>
+        <span class="owner-badge owner-badge--sales">영업관리팀</span>
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk5">
-        <label for="chk5"><b>Step 5. 까르네 수령</b>우편 또는 방문수령</label>
+        <label for="chk5"><b>Step 5. 수수료 결제(리브스메드는 회원가)</b>승인 후 24시간 이내 결제</label>
+        <span class="owner-badge owner-badge--sales">영업관리팀</span>
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk6">
-        <label for="chk6"><b>Step 6. 까르네 이용 수출입 통관</b>각국 세관에서 까르네로 통관 진행</label>
-        <div class="checklist-links">
-          <a href="https://cert.korcham.net/resources/ebook/ecatalogm.html" target="_blank" rel="noopener">📖 까르네 사용자 가이드</a>
-          <a href="https://cert.korcham.net/html/carnet/03/carnetSamplePopup.htm" target="_blank" rel="noopener">📄 까르네 증서 SET견본</a>
-        </div>
+        <label for="chk6"><b>Step 6. 까르네 수령</b>우편 또는 방문수령</label>
+        <span class="owner-badge owner-badge--dept">요청부서</span>
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk7">
-        <label for="chk7"><b>Step 7. 이용완료 / 까르네 반납</b>상공회의소에 까르네 반납</label>
+        <label for="chk7"><b>Step 7. 까르네 이용 수출입 통관</b>각국 세관에서 까르네로 통관 진행</label>
+        <span class="owner-badge owner-badge--dept">요청부서</span>
       </div>
       <div class="checklist-item">
         <input type="checkbox" id="chk8">
-        <label for="chk8"><b>Step 8. 보증보험 환급</b>서울보증보험에 보증금 환급 신청</label>
+        <label for="chk8"><b>Step 8. 이용완료 / 까르네 반납</b>상공회의소에 까르네 반납 (우편발송 가능)</label>
+        <span class="owner-badge owner-badge--dept">요청부서</span>
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" id="chk9">
+        <label for="chk9"><b>Step 9. 보증보험 환급</b>서울보증보험에 보증금 환급 신청</label>
+        <span class="owner-badge owner-badge--dept">요청부서</span>
       </div>
     </div>
   </section>
