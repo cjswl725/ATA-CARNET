@@ -109,99 +109,12 @@
   }
 
   .main-layout{
-    display:grid;
-    grid-template-columns:180px minmax(0,1fr);
-    gap:28px;
-    align-items:start;
-  }
-
-  .quick-nav{
-    position:sticky;
-    top:20px;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-    padding-top:56px;
-  }
-
-  .quick-nav a{
     display:block;
-    background:var(--white);
-    border:1px solid var(--slate-300);
-    color:var(--navy-800);
-    font-size:12.5px;
-    font-weight:600;
-    line-height:1.4;
-    padding:10px 12px;
-    border-radius:8px;
-    transition:all .15s ease;
-    text-decoration:none;
   }
 
-  .quick-nav a:hover{
-    background:var(--navy-700);
-    border-color:var(--navy-700);
-    color:var(--white);
-  }
-
-  .quick-nav-toggle{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:6px;
-    width:100%;
-    background:var(--white);
-    border:1px solid var(--slate-300);
-    color:var(--navy-800);
-    font:inherit;
-    font-size:12.5px;
-    font-weight:600;
-    line-height:1.4;
-    padding:10px 12px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:all .15s ease;
-    text-align:left;
-  }
-  .quick-nav-toggle:hover{
-    background:var(--navy-700);
-    border-color:var(--navy-700);
-    color:var(--white);
-  }
-  .quick-nav-toggle .chevron{
-    flex-shrink:0;
-    transition:transform .15s ease;
-  }
-  .quick-nav-toggle[aria-expanded="true"] .chevron{
-    transform:rotate(180deg);
-  }
-  .quick-nav-sub{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-    margin-left:6px;
-    padding-left:10px;
-    border-left:2px solid var(--slate-300);
-  }
-  .quick-nav-sub[hidden]{
-    display:none;
-  }
-  .quick-nav-sub a{
-    display:block;
-    background:var(--slate-50);
-    border:1px solid var(--slate-300);
-    color:var(--slate-500);
-    font-size:11.5px;
-    font-weight:600;
-    padding:7px 10px;
-    border-radius:6px;
-    text-decoration:none;
-    transition:all .15s ease;
-  }
-  .quick-nav-sub a:hover{
-    background:var(--navy-700);
-    border-color:var(--navy-700);
-    color:var(--white);
+  .content-column{
+    max-width:840px;
+    margin:0 auto;
   }
 
   section{
@@ -845,25 +758,6 @@
 
   /* Responsive tweaks */
   @media (max-width:640px){
-    .main-layout{display:block;}
-    .quick-nav{
-      position:static;
-      flex-direction:row;
-      flex-wrap:wrap;
-      gap:8px;
-      padding:24px 0 0;
-    }
-    .quick-nav a{font-size:13px;padding:9px 12px;}
-    .quick-nav-toggle{font-size:13px;padding:9px 12px;width:auto;}
-    .quick-nav-sub{
-      flex-direction:row;
-      flex-wrap:wrap;
-      width:100%;
-      margin-left:0;
-      padding-left:0;
-      border-left:none;
-    }
-    .quick-nav-sub a{font-size:12px;padding:7px 10px;}
     .overview-grid{grid-template-columns:1fr;}
     section{padding:40px 0;}
     .section-title{font-size:21px;}
@@ -903,11 +797,6 @@
 
   <div class="tab-panel" id="tabPanel-overview" role="tabpanel" aria-labelledby="tabBtn-overview">
   <div class="main-layout">
-    <nav class="quick-nav" aria-label="빠른 이동">
-      <a href="#overview">1. 개요</a>
-      <a href="#checklist">2. 체크리스트</a>
-    </nav>
-
     <div class="content-column">
 
   <!-- 섹션 1: 기본 개요 -->
