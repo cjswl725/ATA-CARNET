@@ -105,7 +105,7 @@
 
   /* Container */
   .container{
-    max-width:1100px;
+    max-width:1320px;
     margin:0 auto;
     padding:0 20px;
   }
@@ -115,7 +115,7 @@
   }
 
   .content-column{
-    max-width:1060px;
+    max-width:1280px;
     margin:0 auto;
   }
 
@@ -330,14 +330,20 @@
     color:var(--white);
     font-weight:700;
     text-align:center;
-    padding:7px 10px;
+    padding:10px 14px;
+    font-size:13px;
+    word-break:keep-all;
   }
   .fee-table td{
-    padding:7px 10px;
+    padding:10px 14px;
     color:var(--navy-800);
     text-align:center;
     vertical-align:middle;
     border-top:1px solid var(--slate-300);
+    font-size:13px;
+    line-height:1.6;
+    word-break:keep-all;
+    overflow-wrap:break-word;
   }
   .fee-table th + th,
   .fee-table td + td{
@@ -384,6 +390,25 @@
     border-radius:50%;
     background:var(--slate-500);
   }
+  .attach-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--navy-700);
+    color:var(--white);
+    font-weight:700;
+    font-size:12.5px;
+    padding:8px 14px;
+    border-radius:20px;
+    white-space:nowrap;
+    text-decoration:none;
+    box-shadow:0 2px 8px rgba(30,58,138,0.25);
+  }
+  .attach-btn:hover{
+    background:var(--navy-600);
+    text-decoration:none;
+  }
+  .attach-btn .clip{font-size:13px;}
 
   .flow-box{
     background:var(--slate-50);
@@ -901,7 +926,7 @@
 
   <div class="tab-bar" role="tablist" aria-label="페이지 탭">
     <button type="button" class="tab-btn active" id="tabBtn-overview" role="tab" aria-selected="true" aria-controls="tabPanel-overview" data-tab="overview">개요</button>
-    <button type="button" class="tab-btn" id="tabBtn-dept" role="tab" aria-selected="false" aria-controls="tabPanel-dept" data-tab="dept">요청부서용</button>
+    <button type="button" class="tab-btn" id="tabBtn-dept" role="tab" aria-selected="false" aria-controls="tabPanel-dept" data-tab="dept">요청부서</button>
     <button type="button" class="tab-btn" id="tabBtn-sales" role="tab" aria-selected="false" aria-controls="tabPanel-sales" data-tab="sales">영업관리팀</button>
   </div>
 
@@ -995,7 +1020,7 @@
 
   <div class="tab-panel" id="tabPanel-dept" role="tabpanel" aria-labelledby="tabBtn-dept" hidden>
     <section id="deptSteps">
-      <div class="section-title"><span class="num">🗂</span>요청부서 진행 단계</div>
+      <div class="section-title"><span class="num">🗂</span>요청부서 진행 업무</div>
       <div class="timeline">
 
         <!-- Step 1 -->
@@ -1006,34 +1031,34 @@
             <div class="fee-table-wrap">
               <table class="fee-table req-table">
                 <thead>
-                  <tr><th style="width:60px">순서</th><th>요청 부서 Check list</th><th>목적</th><th style="width:110px">협의 부서</th><th style="width:100px">기타</th></tr>
+                  <tr><th style="width:56px">순서</th><th style="width:240px">요청 부서 Check list</th><th>목적</th><th style="width:100px">협의 부서</th><th style="width:150px">기타</th></tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td class="num">1</td>
                     <td><ul class="req-list"><li>수출 품목의 인허가 여부 확인</li><li>수출 국가의 의료기기 규제 및 제약 유무 확인</li></ul></td>
-                    <td><ul class="req-list"><li>의료기기의 경우 수입통관 진행 시 관세청 통관 + 각 국가의 식약처 승인이 필요합니다.</li><li> 수입통관 시 Random Inspection 으로 인한 허가가 완료된 경우, 요청될 수 있는 Manufacturer Registration No. , FDA Listing No. 등 RA팀과 사전 확인 필요</li><li>미허가 품목의 경우, 사용 목적(전시용 혹은 임상용)에 따라 요구되는 증빙 서류(ex. Exemption Letter, Declaration Letter) 사전 준비 필요</li></ul></td>
+                    <td><ul class="req-list"><li>의료기기의 경우 수입통관 진행 시 관세청 통관 + 각 국가의 식약처 승인이 필요합니다.</li><li>수입통관 시 Random Inspection으로 인한 허가가 완료된 경우, 요청될 수 있는 Manufacturer Registration No., FDA Listing No. 등 RA팀과 사전 확인 필요</li><li>미허가 품목의 경우, 사용 목적(전시용 혹은 임상용)에 따라 요구되는 증빙 서류(ex. Exemption Letter, Declaration Letter) 사전 준비 필요</li></ul></td>
                     <td>RA 팀</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="num">2</td>
-                    <td>수출 국가 별 요구되는 라벨 문구 및 부착방식 확인</td>
+                    <td><ul class="req-list"><li>수출 국가 별 요구되는 라벨 문구 및 부착방식 확인</li></ul></td>
                     <td><ul class="req-list"><li>국가별 요구되는 라벨링 문구 확인 (ex. Sample - Not for Sale, Not for Human Use 등) 부착 라벨 QA팀과 사전 확인</li><li>미인허가 제품의 경우, 시제품 제작의뢰서 품의 상신 필요</li></ul></td>
                     <td>QA팀</td>
                     <td></td>
                   </tr>
                   <tr>
                     <td class="num">3</td>
-                    <td>선적 진행을 위한 필수 정보 공유</td>
-                    <td>첨부된 파일 내 기재항목 확인 및 작성 후 영업관리팀에 수출 업무 요청</td>
+                    <td><ul class="req-list"><li>선적 진행을 위한 필수 정보 공유</li></ul></td>
+                    <td><ul class="req-list"><li>첨부된 파일 내 기재항목 확인 및 작성 후 영업관리팀에 수출 업무 요청</li></ul></td>
                     <td>영업관리팀</td>
-                    <td><a href="선적 요청_템플릿.xlsx" download>📎 선적 요청_템플릿</a></td>
+                    <td><a class="attach-btn" href="선적 요청_템플릿.xlsx" download><span class="clip">📎</span>선적 요청_템플릿</a></td>
                   </tr>
                   <tr>
                     <td class="num">4</td>
-                    <td>요청부서 탭 확인 및 업무 F/U</td>
-                    <td>내부 프로세스 진행을 위한 상세 절차 참조</td>
+                    <td><ul class="req-list"><li>요청부서 탭 확인 및 업무 F/U</li></ul></td>
+                    <td><ul class="req-list"><li>내부 프로세스 진행을 위한 상세 절차 참조</li></ul></td>
                     <td></td>
                     <td></td>
                   </tr>
