@@ -757,6 +757,12 @@
     font-weight:600;
     color:var(--eu-green);
   }
+  .country-region-title .star-note{
+    font-size:10.5px;
+    font-weight:600;
+    color:var(--danger);
+  }
+  .country-region-title .star-note .star{margin-left:0;}
   .country-region-meta{
     display:flex;
     align-items:center;
@@ -1377,7 +1383,10 @@
 
   function buildCountryInfoHTML() {
     var EU = ["그리스", "네덜란드", "덴마크", "독일", "라트비아", "루마니아", "룩셈부르크", "리투아니아", "몰타", "불가리아", "키프로스", "스웨덴", "스페인", "슬로바니아", "슬로바키아", "아일랜드", "에스토니아", "오스트리아", "이탈리아", "체코", "크로아티아", "포르투칼", "폴란드", "프랑스", "핀란드", "헝가리", "벨기에"];
-    var INDIA_NOTE = ["인도"];
+    var FOOTNOTES = {
+      "인도": { mark: "*", text: "전시회, 직업용구 물품인 경우에만 까르네 사용 가능" },
+      "남아프리카 공화국": { mark: "†", text: "인접국(SWAZILAND, NAMIBIA, LESOTHO, BOTSWANA)도 까르네 발급 가능" }
+    };
     var REGIONS = [
       { label: "유럽 (Europe)", eu: true, list: ["그리스", "네덜란드", "노르웨이", "덴마크", "독일", "라트비아", "러시아", "루마니아", "룩셈부르크", "리투아니아", "마케도니아", "몬테네그로", "몰도바", "몰타", "벨기에", "벨라루스", "불가리아", "보스니아-헤르체고비나", "세르비아", "스웨덴", "스위스", "스페인", "슬로바니아", "슬로바키아", "아이슬란드", "아일랜드", "안도라", "알바니아", "에스토니아", "영국", "오스트리아", "이탈리아", "우크라이나", "지브로터", "체코", "크로아티아", "포르투칼", "폴란드", "프랑스", "핀란드", "헝가리", "키프로스"] },
       { label: "아시아 · 중동 (Asia & Middle East)", list: ["대만", "레바논", "마카오", "말레이시아", "몽고", "바레인", "베트남", "스리랑카", "싱가폴", "아랍에미리트", "이란", "이스라엘", "인도", "인도네시아", "일본", "중국", "카자흐스탄", "카타르", "태국", "튀르키예", "파키스탄", "필리핀", "한국", "홍콩"] },
@@ -1387,25 +1396,34 @@
     ];
     var euSet = {};
     EU.forEach(function (name) { euSet[name] = true; });
-    var indiaSet = {};
-    INDIA_NOTE.forEach(function (name) { indiaSet[name] = true; });
 
     var totalCount = REGIONS.reduce(function (sum, r) { return sum + r.list.length; }, 0);
     var html = '<p class="modal-lead">ATA협약 가입국(총 ' + totalCount + '개국) 목록입니다. 지역명을 눌러 펼쳐보세요.</p><div class="country-accordion">';
     REGIONS.forEach(function (region, idx) {
+      var marksInRegion = [];
       var chips = region.list.map(function (name) {
         var isEU = !!euSet[name];
-        var star = indiaSet[name] ? '<span class="star">*</span>' : '';
-        return '<span class="country-chip' + (isEU ? ' eu' : '') + '">' + name + star + '</span>';
+        var fn = FOOTNOTES[name];
+        var mark = '';
+        if (fn) {
+          mark = '<span class="star">' + fn.mark + '</span>';
+          if (marksInRegion.indexOf(fn.mark) === -1) marksInRegion.push(fn.mark);
+        }
+        return '<span class="country-chip' + (isEU ? ' eu' : '') + '">' + name + mark + '</span>';
       }).join('');
-      var euNote = region.eu ? '<span class="eu-note">● 초록색 = EU 회원국 (까르네 사용 시 1개국으로 분류)</span>' : '';
+      var notes = '';
+      if (region.eu) notes += '<span class="eu-note">● 초록색 = EU 회원국 (까르네 사용 시 1개국으로 분류)</span>';
+      marksInRegion.forEach(function (mark) {
+        var entry = null;
+        for (var key in FOOTNOTES) { if (FOOTNOTES[key].mark === mark) { entry = FOOTNOTES[key]; break; } }
+        if (entry) notes += '<span class="star-note"><span class="star">' + mark + '</span> ' + entry.text + '</span>';
+      });
       html += '<details class="country-region"' + (idx === 0 ? ' open' : '') + '>' +
-        '<summary><span class="country-region-title">' + region.label + euNote + '</span>' +
+        '<summary><span class="country-region-title">' + region.label + notes + '</span>' +
         '<span class="country-region-meta"><span class="count">' + region.list.length + '개국</span><span class="arrow">▶</span></span></summary>' +
         '<div class="country-region-body">' + chips + '</div></details>';
     });
-    html += '</div><p class="modal-caution">※ 협약국 중 인도<span class="star">*</span>는 전시회, 직업용구 물품인 경우에만 까르네 사용이 가능합니다.<br>' +
-      '남아프리카공화국 근접 국가인 SWAZILAND, NAMIBIA, LESOTHO, BOTSWANA도 까르네 발급이 가능합니다.</p>';
+    html += '</div>';
     return html;
   }
 
