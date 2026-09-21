@@ -1189,39 +1189,41 @@
       <div class="section-title"><span class="num">✓</span>진행 체크리스트</div>
       <p class="section-sub">각 단계를 완료할 때마다 체크하며 진행 상황을 관리하세요. (체크 상태는 저장되지 않습니다)</p>
 
-      <div class="checklist-progress">
-        <span id="progressLabel">0 / 7 완료</span>
-        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-      </div>
+      <div class="checklist-block">
+        <div class="checklist-progress">
+          <span class="progress-label">0 / 7 완료</span>
+          <div class="progress-track"><div class="progress-fill"></div></div>
+        </div>
 
-      <div class="checklist-card" id="checklistCard">
-        <div class="checklist-item">
-          <input type="checkbox" id="chk1">
-          <label for="chk1">1. 요청부서 Check List 확인 및 완료</label>
-        </div>
-        <div class="checklist-item">
-          <input type="checkbox" id="chk2">
-          <label for="chk2">2. 예산 및 지출결의서 상신 _ 보증보험료</label>
-        </div>
-        <div class="checklist-item">
-          <input type="checkbox" id="chk3">
-          <label for="chk3">3. 예산 및 지출결의서 상신 _ 까르네 수수료</label>
-        </div>
-        <div class="checklist-item">
-          <input type="checkbox" id="chk4">
-          <label for="chk4">4. 까르네 원본 수령</label>
-        </div>
-        <div class="checklist-item">
-          <input type="checkbox" id="chk5">
-          <label for="chk5">5. 까르네 사용</label>
-        </div>
-        <div class="checklist-item">
-          <input type="checkbox" id="chk6">
-          <label for="chk6">6. 까르네 반납</label>
-        </div>
-        <div class="checklist-item">
-          <input type="checkbox" id="chk7">
-          <label for="chk7">7. 지출결의서 상신 _ 보증보험 환급금</label>
+        <div class="checklist-card">
+          <div class="checklist-item">
+            <input type="checkbox" id="chk1">
+            <label for="chk1">1. 요청부서 Check List 확인 및 완료</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk2">
+            <label for="chk2">2. 예산 및 지출결의서 상신 _ 보증보험료</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk3">
+            <label for="chk3">3. 예산 및 지출결의서 상신 _ 까르네 수수료</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk4">
+            <label for="chk4">4. 까르네 원본 수령</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk5">
+            <label for="chk5">5. 까르네 사용</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk6">
+            <label for="chk6">6. 까르네 반납</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk7">
+            <label for="chk7">7. 지출결의서 상신 _ 보증보험 환급금</label>
+          </div>
         </div>
       </div>
     </section>
@@ -1316,6 +1318,50 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- 섹션 2: 체크리스트 -->
+    <section id="checklistSales">
+      <div class="section-title"><span class="num">✓</span>진행 체크리스트</div>
+      <p class="section-sub">각 단계를 완료할 때마다 체크하며 진행 상황을 관리하세요. (체크 상태는 저장되지 않습니다)</p>
+
+      <div class="checklist-block">
+        <div class="checklist-progress">
+          <span class="progress-label">0 / 7 완료</span>
+          <div class="progress-track"><div class="progress-fill"></div></div>
+        </div>
+
+        <div class="checklist-card">
+          <div class="checklist-item">
+            <input type="checkbox" id="schk1">
+            <label for="schk1">1. 요청부서 Check List 확인 및 완료</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk2">
+            <label for="schk2">2. 예산 및 지출결의서 상신 _ 보증보험료</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk3">
+            <label for="schk3">3. 예산 및 지출결의서 상신 _ 까르네 수수료</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk4">
+            <label for="schk4">4. 까르네 원본 수령</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk5">
+            <label for="schk5">5. 까르네 사용</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk6">
+            <label for="schk6">6. 까르네 반납</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk7">
+            <label for="schk7">7. 지출결의서 상신 _ 보증보험 환급금</label>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -1456,32 +1502,34 @@
   });
 
   // Checklist progress tracking
-  var checkboxes = document.querySelectorAll('#checklistCard input[type="checkbox"]');
-  var progressFill = document.getElementById('progressFill');
-  var progressLabel = document.getElementById('progressLabel');
+  document.querySelectorAll('.checklist-block').forEach(function (block) {
+    var checkboxes = block.querySelectorAll('input[type="checkbox"]');
+    var progressFill = block.querySelector('.progress-fill');
+    var progressLabel = block.querySelector('.progress-label');
 
-  function updateProgress() {
-    var total = checkboxes.length;
-    var checked = 0;
+    function updateProgress() {
+      var total = checkboxes.length;
+      var checked = 0;
+      checkboxes.forEach(function (cb) {
+        var item = cb.closest('.checklist-item');
+        if (cb.checked) {
+          checked++;
+          item.classList.add('checked');
+        } else {
+          item.classList.remove('checked');
+        }
+      });
+      var percent = total === 0 ? 0 : Math.round((checked / total) * 100);
+      progressFill.style.width = percent + '%';
+      progressLabel.textContent = checked + ' / ' + total + ' 완료';
+    }
+
     checkboxes.forEach(function (cb) {
-      var item = cb.closest('.checklist-item');
-      if (cb.checked) {
-        checked++;
-        item.classList.add('checked');
-      } else {
-        item.classList.remove('checked');
-      }
+      cb.addEventListener('change', updateProgress);
     });
-    var percent = total === 0 ? 0 : Math.round((checked / total) * 100);
-    progressFill.style.width = percent + '%';
-    progressLabel.textContent = checked + ' / ' + total + ' 완료';
-  }
 
-  checkboxes.forEach(function (cb) {
-    cb.addEventListener('change', updateProgress);
+    updateProgress();
   });
-
-  updateProgress();
 </script>
 
 </body>
