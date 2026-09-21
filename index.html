@@ -400,6 +400,21 @@
   .req-table .req-list li.no-bullet::before{
     content:none;
   }
+  .req-table .req-list .req-list{
+    margin-top:5px;
+  }
+  .req-table .req-list .req-list li{
+    padding-left:14px;
+  }
+  .req-table .req-list .req-list li::before{
+    content:'-';
+    width:auto;
+    height:auto;
+    border-radius:0;
+    background:none;
+    color:var(--slate-500);
+    top:0;
+  }
   .attach-btn{
     display:inline-flex;
     align-items:center;
