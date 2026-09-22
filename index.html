@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A.T.A CARNET 신청 및 발급 절차 가이드</title>
+<style>
+  :root{
+    --navy-900:#0f172a;
+    --navy-800:#1e293b;
+    --navy-700:#1e3a8a;
+    --navy-600:#2549a3;
+    --slate-500:#64748b;
+    --slate-300:#cbd5e1;
+    --slate-100:#f1f5f9;
+    --slate-50:#f8fafc;
+    --white:#ffffff;
+    --danger:#b91c1c;
+    --danger-bg:#fef2f2;
+    --eu-green:#1a7f5c;
+    --eu-green-bg:#eaf6f0;
+    --radius:12px;
+    --shadow:0 4px 14px rgba(15,23,42,0.08);
+    --shadow-lg:0 10px 30px rgba(15,23,42,0.14);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:var(--slate-50);
+    color:var(--navy-900);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--navy-700);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* Brand + hero (unified navy block) */
+  .brand-hero{
+    position:relative;
+    background:linear-gradient(135deg, #0c1429, #1b2a4a);
+    overflow:hidden;
+  }
+  .brand-hero::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:600px;
+    height:100%;
+    background:radial-gradient(circle at 15% 45%, rgba(255,255,255,0.09), rgba(255,255,255,0) 60%);
+    pointer-events:none;
+  }
+  .site-header{
+    position:relative;
+    z-index:1;
+    padding:14px 0;
+  }
+  .site-header .container{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .brand-logo{
+    display:block;
+    height:22px;
+    width:auto;
+  }
+  .brand-divider{
+    width:1px;
+    height:16px;
+    background:rgba(255,255,255,0.25);
+  }
+  .brand-label{
+    color:rgba(203,213,225,0.85);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+
+  /* Hero */
+  .hero{
+    position:relative;
+    z-index:1;
+    color:var(--white);
+    padding:36px 20px 40px;
+    text-align:center;
+  }
+  .hero h1{
+    font-size:clamp(24px,4vw,38px);
+    margin:0 0 12px;
+    font-weight:800;
+    letter-spacing:-0.5px;
+  }
+  .hero p{
+    color:rgba(203,213,225,0.85);
+    font-size:13.5px;
+    max-width:680px;
+    margin:0 auto;
+    word-break:keep-all;
+  }
+
+  /* Container */
+  .container{
+    max-width:1320px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+
+  .main-layout{
+    display:block;
+  }
+
+  .content-column{
+    max-width:1280px;
+    margin:0 auto;
+  }
+
+  section{
+    padding:56px 0;
+  }
+  section + section{
+    border-top:1px solid var(--slate-100);
+  }
+
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:26px;
+    font-weight:800;
+    color:var(--navy-900);
+    margin-bottom:8px;
+  }
+  .section-title .num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:var(--navy-700);
+    color:var(--white);
+    font-size:15px;
+    font-weight:700;
+    flex-shrink:0;
+  }
+  .section-sub{
+    color:var(--slate-500);
+    margin-bottom:28px;
+    font-size:15px;
+  }
+
+  /* Overview cards */
+  .overview-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+    margin:0 0 20px;
+  }
+
+  .overview-card{
+    width:100%;
+    background:var(--white);
+    border:1px solid var(--slate-300);
+    border-radius:var(--radius);
+    padding:20px 24px;
+    box-shadow:var(--shadow);
+    text-align:left;
+  }
+
+  button.overview-card{
+    color:inherit;
+    font:inherit;
+    cursor:pointer;
+  }
+
+  button.overview-card:hover,
+  button.overview-card:focus-visible{
+    border-color:var(--navy-700);
+    box-shadow:var(--shadow-lg);
+    outline:none;
+  }
+
+  .overview-card h3{
+    margin:0;
+    color:var(--navy-900);
+    font-size:17px;
+    font-weight:800;
+    line-height:1.3;
+  }
+
+  .overview-card--centered{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+
+  .overview-card--centered h3{
+    margin:0;
+  }
+
+  .overview-card-hint{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    margin-top:12px;
+    color:var(--navy-600);
+    font-size:12.5px;
+    font-weight:600;
+  }
+
+  .overview-card-hint span{
+    transition:transform .15s ease;
+  }
+
+  button.overview-card:hover .overview-card-hint span,
+  button.overview-card:focus-visible .overview-card-hint span{
+    transform:translateX(3px);
+  }
+
+  .overview-card p{
+    margin:0;
+    font-size:15px;
+    color:var(--slate-500);
+    line-height:1.5;
+  }
+
+  /* Timeline / Steps */
+  .timeline{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+  }
+
+  .step-card{
+    background:var(--white);
+    border:1px solid var(--slate-100);
+    border-radius:var(--radius);
+    padding:22px;
+    box-shadow:var(--shadow);
+    scroll-margin-top:90px;
+  }
+  .step-body{min-width:0;}
+  .step-body h3{
+    margin:2px 0 16px;
+    font-size:18px;
+    color:var(--navy-900);
+    font-weight:800;
+  }
+  .step-body h3 .step-tag{
+    display:inline-block;
+    background:var(--navy-700);
+    color:var(--white);
+    font-size:11px;
+    font-weight:700;
+    padding:2px 9px;
+    border-radius:6px;
+    margin-right:8px;
+    vertical-align:middle;
+    letter-spacing:0.5px;
+  }
+  .step-body ul{
+    margin:0 0 12px;
+    padding-left:20px;
+    font-size:14.5px;
+    color:var(--navy-800);
+  }
+  .step-body ul li{margin-bottom:6px;}
+  .step-body ul li:last-child{margin-bottom:0;}
+  .step-body p.desc{
+    font-size:14.5px;
+    color:var(--navy-800);
+    margin:0 0 12px;
+  }
+
+  .info-box{
+    background:var(--slate-100);
+    border-radius:8px;
+    padding:14px 16px;
+    font-size:13.5px;
+    color:var(--navy-800);
+    margin:10px 0;
+  }
+  .info-box .info-title{
+    font-weight:700;
+    color:var(--navy-700);
+    margin-bottom:6px;
+    font-size:13px;
+  }
+  .info-box .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 14px;
+    align-items:center;
+  }
+
+  .warn-box{
+    display:flex;
+    gap:8px;
+    background:var(--danger-bg);
+    border:1px solid #fecaca;
+    border-left:4px solid var(--danger);
+    border-radius:8px;
+    padding:8px 12px;
+    font-size:12px;
+    color:#7f1d1d;
+    margin:10px 0;
+  }
+  .warn-box .warn-icon{flex-shrink:0;font-size:14px;line-height:1.3;}
+
+  .fee-table-wrap{
+    margin:10px 0;
+    border:1px solid var(--slate-300);
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .fee-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:12px;
+  }
+  .fee-table th{
+    background:var(--navy-700);
+    color:var(--white);
+    font-weight:700;
+    text-align:center;
+    padding:10px 14px;
+    font-size:13px;
+    word-break:keep-all;
+  }
+  .fee-table td{
+    padding:10px 14px;
+    color:var(--navy-800);
+    text-align:center;
+    vertical-align:middle;
+    border-top:1px solid var(--slate-300);
+    font-size:13px;
+    line-height:1.6;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+  }
+  .fee-table th + th,
+  .fee-table td + td{
+    border-left:1px solid var(--slate-300);
+  }
+  .fee-table tr:first-child td{border-top:none;}
+
+  .req-table td{text-align:left;}
+  .req-table td:nth-child(4),
+  .req-table td:nth-child(5){
+    text-align:center;
+  }
+  .req-table td.cat{
+    font-weight:700;
+    background:var(--slate-100);
+    white-space:nowrap;
+    text-align:center;
+  }
+  .req-table td.num{
+    text-align:center;
+    color:var(--slate-500);
+    white-space:nowrap;
+  }
+  .req-note{
+    color:var(--slate-500);
+    font-size:11.5px;
+  }
+  .req-table .req-list{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+  }
+  .req-table .req-list li{
+    position:relative;
+    padding-left:13px;
+    line-height:1.55;
+  }
+  .req-table .req-list li::before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:0.6em;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:var(--slate-500);
+  }
+  .req-table .req-list li.no-bullet{
+    padding-left:0;
+  }
+  .req-table .req-list li.no-bullet::before{
+    content:none;
+  }
+  .req-table .req-list .req-list{
+    margin-top:5px;
+  }
+  .req-table .req-list .req-list li{
+    padding-left:14px;
+  }
+  .req-table .req-list .req-list li::before{
+    content:'-';
+    width:auto;
+    height:auto;
+    border-radius:0;
+    background:none;
+    color:var(--slate-500);
+    top:0;
+  }
+  .attach-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--navy-700);
+    color:var(--white);
+    font-weight:700;
+    font-size:12.5px;
+    padding:8px 14px;
+    border-radius:20px;
+    white-space:nowrap;
+    text-decoration:none;
+    box-shadow:0 2px 8px rgba(30,58,138,0.25);
+  }
+  .attach-btn:hover{
+    background:var(--navy-600);
+    text-decoration:none;
+  }
+  .attach-btn .clip{font-size:13px;}
+
+  .flow-box{
+    background:var(--slate-50);
+    border:1px dashed var(--slate-300);
+    border-radius:8px;
+    padding:14px 16px;
+    font-size:13.5px;
+    color:var(--navy-800);
+    margin:10px 0;
+    overflow-x:auto;
+  }
+  .flow-box .flow-title{
+    font-weight:700;
+    color:var(--navy-700);
+    margin-bottom:8px;
+    font-size:13px;
+  }
+  .flow-steps{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:6px;
+  }
+  .flow-steps span.node{
+    background:var(--white);
+    border:1px solid var(--slate-300);
+    border-radius:6px;
+    padding:6px 10px;
+    font-size:12.5px;
+    white-space:nowrap;
+  }
+  .flow-steps span.arrow{
+    color:var(--slate-500);
+    font-weight:700;
+  }
+
+  /* Checklist section */
+  .checklist-card{
+    background:var(--white);
+    border:1px solid var(--slate-100);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:8px 8px;
+  }
+  .checklist-item{
+    display:flex;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:12px;
+    padding:14px 16px;
+    border-bottom:1px solid var(--slate-100);
+  }
+  .checklist-links{
+    display:flex;
+    gap:8px;
+    margin-left:auto;
+    flex-wrap:wrap;
+    flex-shrink:0;
+  }
+  .checklist-links a{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    background:var(--navy-700);
+    border-radius:6px;
+    padding:5px 10px;
+    color:var(--white);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.2px;
+    white-space:nowrap;
+  }
+  .checklist-links a:hover{
+    background:var(--navy-900);
+    text-decoration:none;
+  }
+  .checklist-item:last-child{border-bottom:none;}
+  .checklist-item input[type="checkbox"]{
+    width:20px;
+    height:20px;
+    accent-color:var(--navy-700);
+    margin-top:2px;
+    flex-shrink:0;
+    cursor:pointer;
+  }
+  .checklist-item label{
+    font-size:14.5px;
+    color:var(--navy-800);
+    font-weight:700;
+    cursor:pointer;
+  }
+  .checklist-item.checked label{
+    color:var(--slate-500);
+    text-decoration:line-through;
+  }
+  .checklist-progress{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:16px;
+    font-size:13.5px;
+    color:var(--navy-800);
+    font-weight:600;
+  }
+  .progress-track{
+    flex:1;
+    height:8px;
+    background:var(--slate-100);
+    border-radius:999px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    background:var(--navy-700);
+    width:0%;
+    transition:width .3s ease;
+  }
+
+  .link-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:var(--navy-900);
+    color:var(--white);
+    border-radius:var(--radius);
+    padding:20px 24px;
+    margin:10px 0;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .link-card .link-text b{display:block;font-size:15px;margin-bottom:4px;}
+  .link-card .link-text span{color:var(--slate-300);font-size:13px;}
+  .link-card a.btn{
+    background:var(--white);
+    color:var(--navy-900);
+    font-weight:700;
+    font-size:13.5px;
+    padding:10px 20px;
+    border-radius:8px;
+    white-space:nowrap;
+  }
+  .link-card a.btn:hover{text-decoration:none;opacity:0.9;}
+
+  /* Footer */
+  footer{
+    background:var(--navy-900);
+    color:var(--slate-100);
+    text-align:center;
+    padding:28px 20px;
+    font-size:12px;
+    line-height:1.8;
+  }
+  footer div + div{margin-top:8px;}
+  footer a{color:var(--white);text-decoration:underline;}
+  footer a:hover{color:var(--slate-300);}
+
+  /* Back to top */
+  #backToTop{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:var(--navy-700);
+    color:var(--white);
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+    box-shadow:var(--shadow-lg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:all .25s ease;
+    z-index:200;
+  }
+  #backToTop.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
+  #backToTop:hover{background:var(--navy-600);}
+
+  .modal[hidden]{display:none;}
+  .modal{
+    position:fixed;
+    inset:0;
+    z-index:300;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(15,23,42,0.62);
+  }
+  .modal-dialog{
+    position:relative;
+    width:min(680px,100%);
+    max-height:min(720px,calc(100vh - 40px));
+    overflow:auto;
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:30px 34px;
+    box-shadow:var(--shadow-lg);
+  }
+  .modal-dialog h2{
+    margin:0 40px 14px 0;
+    color:var(--navy-900);
+    font-size:19px;
+    font-weight:700;
+  }
+  .modal-dialog p{
+    margin:0 0 10px;
+    color:var(--navy-800);
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  .modal-dialog p.modal-lead{
+    color:var(--navy-800);
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  .modal-dialog p.modal-subtext{
+    margin:-2px 0 16px;
+    color:var(--slate-500);
+    font-size:12px;
+    line-height:1.6;
+  }
+  .modal-dialog p.modal-caution{
+    margin-top:18px;
+    color:var(--slate-500);
+    font-size:12.5px;
+    line-height:1.6;
+  }
+  .modal-dialog p.modal-eyebrow{
+    margin:18px 0 10px;
+    padding-top:14px;
+    border-top:1px solid var(--slate-100);
+    color:var(--navy-600);
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+  }
+  .modal-dialog p.modal-eyebrow:first-child{
+    margin-top:0;
+    padding-top:0;
+    border-top:0;
+  }
+  .modal-dialog .modal-category{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:14px 0 7px;
+  }
+  .modal-dialog .modal-category .badge{
+    flex:none;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:var(--navy-600);
+    color:var(--white);
+    font-size:10px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .modal-dialog .modal-category .badge--danger{
+    background:var(--danger);
+  }
+  .modal-dialog .modal-category .label{
+    color:var(--navy-900);
+    font-size:13px;
+    font-weight:700;
+  }
+  .modal-dialog .modal-category .label span{
+    margin-left:4px;
+    color:var(--slate-500);
+    font-size:11px;
+    font-weight:500;
+  }
+  .modal-dialog ul.modal-list{
+    margin:0 0 4px;
+    padding:0;
+    list-style:none;
+  }
+  .modal-dialog ul.modal-list li{
+    position:relative;
+    padding-left:14px;
+    color:var(--navy-700);
+    font-size:12.5px;
+    line-height:1.55;
+    margin-bottom:5px;
+  }
+  .modal-dialog ul.modal-list li::before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:0.6em;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:var(--slate-500);
+  }
+  .country-accordion{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .country-region{
+    border:1px solid var(--slate-300);
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .country-region summary{
+    list-style:none;
+    cursor:pointer;
+    padding:10px 14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    background:var(--slate-50);
+    font-weight:700;
+    color:var(--navy-800);
+    font-size:13px;
+  }
+  .country-region summary::-webkit-details-marker{display:none;}
+  .country-region-title{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .country-region-title .eu-note{
+    font-size:10.5px;
+    font-weight:600;
+    color:var(--eu-green);
+  }
+  .country-region-title .star-note{
+    font-size:10.5px;
+    font-weight:600;
+    color:var(--danger);
+  }
+  .country-region-title .star-note .star{margin-left:0;}
+  .country-region-meta{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex:none;
+  }
+  .country-region-meta .count{
+    font-size:10.5px;
+    font-weight:700;
+    color:var(--navy-700);
+    background:var(--slate-100);
+    padding:2px 7px;
+    border-radius:20px;
+  }
+  .country-region-meta .arrow{
+    color:var(--slate-500);
+    font-size:11px;
+    transition:transform .15s;
+  }
+  .country-region[open] .country-region-meta .arrow{transform:rotate(90deg);}
+  .country-region-body{
+    padding:10px 14px 12px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    background:var(--white);
+  }
+  .country-chip{
+    padding:5px 10px;
+    border-radius:7px;
+    font-size:12px;
+    background:var(--slate-50);
+    border:1px solid var(--slate-300);
+    color:var(--navy-800);
+  }
+  .country-chip.eu{
+    background:var(--eu-green-bg);
+    border-color:var(--eu-green);
+    color:var(--eu-green);
+    font-weight:600;
+  }
+  .star{
+    color:var(--danger);
+    font-weight:700;
+    margin-left:1px;
+  }
+  .compliance-note{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    margin:12px 0 20px;
+    padding:10px 14px;
+    background:var(--slate-50);
+    border-left:3px solid var(--slate-300);
+    border-radius:6px;
+    color:var(--slate-500);
+    font-size:12.5px;
+    line-height:1.6;
+  }
+  .compliance-note .icon{
+    flex-shrink:0;
+    line-height:1.4;
+  }
+  .duration-panel{
+    background:var(--white);
+    border:1px solid var(--slate-300);
+    border-radius:var(--radius);
+    padding:20px 24px;
+    box-shadow:var(--shadow);
+  }
+  .duration-panel h3{
+    margin:0 0 10px;
+    font-size:17px;
+    color:var(--navy-900);
+    font-weight:800;
+  }
+  .duration-panel p{
+    margin:0 0 10px;
+    color:var(--navy-800);
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  .duration-panel ul{
+    margin:0 0 12px;
+    padding-left:20px;
+    color:var(--navy-800);
+    font-size:13.5px;
+  }
+  .duration-panel ul li{margin-bottom:6px;}
+  .duration-panel ul li:last-child{margin-bottom:0;}
+  .duration-panel p.caution{
+    margin:14px 0 0;
+    padding-top:12px;
+    border-top:1px solid var(--slate-100);
+    color:#000000;
+    font-size:12.5px;
+    line-height:1.6;
+  }
+  .duration-panel p.modal-lead{
+    color:var(--navy-800);
+    font-size:13.5px;
+    line-height:1.6;
+    margin:0 0 14px;
+  }
+  .duration-panel p.modal-caution{
+    margin-top:16px;
+    padding-top:12px;
+    border-top:1px solid var(--slate-100);
+    color:var(--slate-500);
+    font-size:12.5px;
+    line-height:1.6;
+  }
+  .duration-panel .modal-category{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:14px 0 7px;
+  }
+  .duration-panel .modal-category:first-child{margin-top:0;}
+  .duration-panel .modal-category .label{
+    color:var(--navy-900);
+    font-size:13.5px;
+    font-weight:700;
+  }
+  .duration-panel .modal-category .label span{
+    margin-left:4px;
+    color:var(--slate-500);
+    font-size:11.5px;
+    font-weight:500;
+  }
+  .modal-close{
+    position:absolute;
+    top:16px;
+    right:18px;
+    width:36px;
+    height:36px;
+    border:0;
+    border-radius:50%;
+    background:var(--slate-100);
+    color:var(--navy-800);
+    font-size:24px;
+    line-height:1;
+    cursor:pointer;
+  }
+  .modal-close:hover{background:var(--slate-300);}
+
+  @media (max-width:480px){
+    #backToTop{
+      right:14px;
+      bottom:14px;
+      width:42px;
+      height:42px;
+      font-size:18px;
+    }
+  }
+
+  /* Tabs */
+  .tab-bar{
+    display:flex;
+    gap:8px;
+    margin:28px 0 0;
+    border-bottom:1px solid var(--slate-300);
+    flex-wrap:wrap;
+  }
+  .tab-btn{
+    appearance:none;
+    background:transparent;
+    border:none;
+    border-bottom:3px solid transparent;
+    color:var(--slate-500);
+    font:inherit;
+    font-size:15px;
+    font-weight:700;
+    padding:12px 18px;
+    cursor:pointer;
+    transition:all .15s ease;
+    margin-bottom:-1px;
+  }
+  .tab-btn:hover{
+    color:var(--navy-700);
+  }
+  .tab-btn.active{
+    color:var(--navy-700);
+    border-bottom-color:var(--navy-700);
+  }
+  .tab-panel[hidden]{display:none;}
+  .tab-placeholder{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:240px;
+    border:1px dashed var(--slate-300);
+    border-radius:var(--radius);
+    color:var(--slate-500);
+    font-size:14px;
+    margin-top:24px;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width:640px){
+    .overview-grid{grid-template-columns:1fr;}
+    section{padding:40px 0;}
+    .section-title{font-size:21px;}
+    .step-card{padding:16px 14px;}
+    .hero{padding:32px 16px 36px;}
+    .modal-dialog{padding:28px 22px;}
+    .modal-dialog h2{font-size:18px;}
+    .fee-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+
+    /* Requirement checklist table -> stacked cards on mobile */
+    .req-table-wrap{border:none;border-radius:0;overflow:visible;}
+    .req-table{min-width:0;}
+    .req-table thead{display:none;}
+    .req-table, .req-table tbody, .req-table tr, .req-table td{display:block;width:auto;}
+    .req-table tr{
+      background:var(--white);
+      border:1px solid var(--slate-300);
+      border-radius:8px;
+      padding:12px 14px;
+      margin:10px;
+    }
+    .req-table td, .req-table td.cat, .req-table td.num{
+      border:none !important;
+      text-align:left !important;
+      padding:6px 0 !important;
+      white-space:normal;
+    }
+    .req-table td::before{
+      content:attr(data-label);
+      display:block;
+      font-size:10px;
+      font-weight:700;
+      color:var(--slate-500);
+      letter-spacing:.3px;
+      text-transform:uppercase;
+      margin-bottom:3px;
+    }
+    .req-table td:empty::before{content:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="brand-hero">
+<header class="site-header">
+  <div class="container">
+    <img class="brand-logo" src="data:image/png;base64,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" alt="LIVSMED">
+    <span class="brand-divider" aria-hidden="true"></span>
+    <span class="brand-label">Internal Guide · ATA CARNET</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>A.T.A CARNET 신청 및 발급 절차 가이드</h1>
+    <p>본 페이지는 사내 업무 참고용 안내 자료입니다.
+세부 정책 및 담당자 정보는 변경될 수 있습니다.</p>
+  </div>
+</section>
+</div>
+
+<main class="container">
+
+  <div class="tab-bar" role="tablist" aria-label="페이지 탭">
+    <button type="button" class="tab-btn active" id="tabBtn-overview" role="tab" aria-selected="true" aria-controls="tabPanel-overview" data-tab="overview">개요</button>
+    <button type="button" class="tab-btn" id="tabBtn-dept" role="tab" aria-selected="false" aria-controls="tabPanel-dept" data-tab="dept">요청부서</button>
+    <button type="button" class="tab-btn" id="tabBtn-sales" role="tab" aria-selected="false" aria-controls="tabPanel-sales" data-tab="sales">영업관리팀</button>
+  </div>
+
+  <div class="tab-panel" id="tabPanel-overview" role="tabpanel" aria-labelledby="tabBtn-overview">
+  <div class="main-layout">
+    <div class="content-column">
+
+  <!-- 섹션 1: 기본 개요 -->
+  <section id="overview">
+    <div class="section-title">ATA CARNET 기본 개요</div>
+    <div class="compliance-note" style="color:#C00000;"><span class="icon">※</span><span>까르네는 관세 담보 제공용이며 통관 절차 자체를 보장하지 않습니다. 수입국별 요건·규제사항은 별도 확인해주세요.</span></div>
+
+    <div class="overview-grid">
+      <button class="overview-card" type="button" data-modal-title="💡 ATA CARNET이란?" data-modal-content="carnetInfo" aria-haspopup="dialog" aria-controls="carnetModal">
+        <h3>💡 ATA CARNET이란?</h3>
+        <span class="overview-card-hint">자세히 보기 <span aria-hidden="true">→</span></span>
+      </button>
+    </div>
+
+    <div class="duration-panel">
+      <h3>⏳ 예상 소요 기간</h3>
+      <p>기본적으로 출국일 기준 약 2주 정도 기간을 두고 미리 준비하시기 바랍니다.</p>
+      <ul>
+        <li>서류 준비 및 발급 절차: 영업일 기준 5일 소요</li>
+        <li>우편 수령: 약 1주일 소요</li>
+      </ul>
+      <p class="caution">❗ 불가피하게 긴급진행 필요 시, 출국일 기준 최소 일주일 전 진행 필요. 이 경우 까르네 증서는 상공회의소에 방문 수령 필수.</p>
+    </div>
+
+    <div class="duration-panel" id="countryInfoPanel" style="margin-top:12px;">
+      <h3>🌐 협약국 안내</h3>
+    </div>
+
+    <div class="duration-panel" style="margin-top:12px;">
+      <h3>🏢 주요 담당 기관</h3>
+      <div class="modal-category"><span class="label">대한상공회의소<span>원산지증명센터</span></span></div>
+      <p>🌐 <a href="https://cert.korcham.net/" target="_blank" rel="noopener">cert.korcham.net</a><br>☎ 안양과천상공회의소 <a href="tel:0314479171">031-447-9171</a></p>
+      <div class="modal-category"><span class="label">SGI 서울보증<span>서울보증보험</span></span></div>
+      <p>🌐 <a href="https://www.sgic.co.kr/" target="_blank" rel="noopener">www.sgic.co.kr</a><br>☎ 보증보험 담당자 <a href="tel:0260500021">02-6050-0021</a></p>
+    </div>
+
+  </section>
+
+    </div>
+  </div>
+  </div>
+
+  <div class="tab-panel" id="tabPanel-dept" role="tabpanel" aria-labelledby="tabBtn-dept" hidden>
+    <section id="deptSteps">
+      <div class="section-title"><span class="num">📋</span>요청부서 진행 업무</div>
+      <div class="timeline">
+
+        <!-- Step 0 -->
+        <div class="step-card" id="deptStep1">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 1</span>요청부서 Check list</h3>
+            <p class="desc">까르네 발급 전, 요청부서에서 아래 항목을 순서대로 확인 및 진행합니다.</p>
+            <div class="fee-table-wrap req-table-wrap">
+              <table class="fee-table req-table">
+                <thead>
+                  <tr><th style="width:56px">순서</th><th style="width:240px">요청부서 Check list</th><th>목적</th><th style="width:100px">협의 부서</th><th style="width:150px">기타</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="num" data-label="순서">1</td>
+                    <td data-label="요청부서 Check list"><ul class="req-list"><li>수출 품목의 인허가 여부 확인</li><li>수출 국가의 의료기기 규제 및 제약 유무 확인</li></ul></td>
+                    <td data-label="목적"><ul class="req-list"><li class="no-bullet" style="color:#C00000;">※ 수입 시 Random Inspection으로 인한 통관지연 리스크를 최소화하기 위해 RA팀과 사전 협의 필요</li><li>의료기기의 경우 수입통관 진행 시 <u>관세청 통관 + 각 국가의 식약처 승인</u>이 필요합니다.
+                      <ul class="req-list"><li>이에 따라, 까르네 외에 각 국가별 요구되는 서류 및 절차 확인을 위해 RA팀에 수출 목록 공유</li></ul>
+                    </li><li><strong>허가 품목의 경우,</strong> Manufacturer Registration No., FDA Listing No. 등 요청될 수 있는 정보 확인</li><li><strong>미허가 품목의 경우,</strong> 사용 목적(전시용 혹은 임상용)에 따라 요구되는 증빙 서류(ex. Exemption Letter, Declaration Letter) 준비</li></ul></td>
+                    <td data-label="협의 부서">RA 팀</td>
+                    <td data-label="기타"></td>
+                  </tr>
+                  <tr>
+                    <td class="num" data-label="순서">2</td>
+                    <td data-label="요청부서 Check list"><ul class="req-list"><li>수출 국가 별 요구되는 라벨 문구 및 부착방식 확인</li></ul></td>
+                    <td data-label="목적"><ul class="req-list"><li>국가별 요구되는 라벨링 문구 (ex. Sample - Not for Sale, Not for Human Use 등) QA팀과 사전 확인</li><li>미인허가 제품의 경우, 시제품 제작의뢰서 품의 상신 필요</li></ul></td>
+                    <td data-label="협의 부서">QA팀</td>
+                    <td data-label="기타"></td>
+                  </tr>
+                  <tr>
+                    <td class="num" data-label="순서">3</td>
+                    <td data-label="요청부서 Check list"><ul class="req-list"><li>선적 진행을 위한 필수 정보 공유</li></ul></td>
+                    <td data-label="목적"><ul class="req-list"><li>첨부된 파일 내 기재항목 확인 및 작성 후 영업관리팀에 수출 업무 요청</li></ul></td>
+                    <td data-label="협의 부서">영업관리팀</td>
+                    <td data-label="기타"><a class="attach-btn" href="선적 요청_템플릿.xlsx" download><span class="clip">📎</span>선적 요청_템플릿</a></td>
+                  </tr>
+                  <tr>
+                    <td class="num" data-label="순서">4</td>
+                    <td data-label="요청부서 Check list"><ul class="req-list"><li>준비 일정에 따른 내부 프로세스 F/Up</li></ul></td>
+                    <td data-label="목적"><ul class="req-list"><li>내부 프로세스 진행을 위한 하기 절차 참조</li></ul></td>
+                    <td data-label="협의 부서"></td>
+                    <td data-label="기타"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card" id="step2">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 2</span>예산집행품의 / 지출결의서 상신 _ 보증보험료</h3>
+            <ul>
+              <li>재무기획, 재무회계팀과 긴급자금 집행 절차 사전 협의 필요</li>
+              <li>영업관리팀에서 보증보험 청약서 및 가상계좌 입금안내서 수령 후, 품의 진행</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card" id="deptStep3">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 3</span>예산집행품의 / 지출결의서 상신 _ 까르네 수수료</h3>
+            <p class="desc">영업관리팀에서 까르네 신청 후 안내 시 발급 수수료를 결제합니다.</p>
+            <ul>
+              <li>승인 후 <strong>24시간 이내 미결제 시 승인이 자동 취소</strong>됩니다.</li>
+              <li>리브스메드는 <strong>회원가로 결제</strong>하시면 됩니다.</li>
+              <li><strong>e까르네 신청한 경우, ID / PIN 코드</strong>는 결제 완료 후 <strong>1시간 뒤</strong>에 생성됩니다.</li>
+            </ul>
+            <div class="fee-table-wrap">
+              <table class="fee-table">
+                <thead>
+                  <tr><th>항목</th><th>구분</th><th>물품가액</th><th>수수료(VAT 포함)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td rowspan="4">기본료</td><td rowspan="2">회원</td><td>5천만원 미만</td><td>132,000원</td></tr>
+                  <tr><td>5천만원 이상</td><td>143,000원</td></tr>
+                  <tr><td rowspan="2">비회원</td><td>5천만원 미만</td><td>220,000원</td></tr>
+                  <tr><td>5천만원 이상</td><td>231,000원</td></tr>
+                  <tr><td rowspan="2">추가수수료</td><td>통관국가 1개국 추가 시</td><td></td><td>11,000원</td></tr>
+                  <tr><td>분실 및 재발급</td><td>회원·비회원</td><td>55,000원</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card" id="step4">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 4</span>까르네 수령(우편 또는 방문)</h3>
+            <p class="desc"><strong>[방문수령]</strong> 마이페이지에서 접수증을 출력하거나 사진으로 찍은 후 결제일 다음날 오후 2시(14:00) 이후 까르네 신청 상공회의소로 방문하여 원본을 수령합니다. (신청한 상의에서만 수령이 가능합니다.)</p>
+            <p class="desc"><strong>[우편수령]</strong> 결제일 다음날 오후에 일괄 발송되므로 결제 후 까르네 원본을 수령하기까지 최대 일주일 정도 소요될 수 있습니다.</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-card" id="step5">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 5</span>까르네 이용 수출입 통관</h3>
+            <p class="desc">각국 세관에서 까르네 증서를 제시하고 통관을 진행합니다.</p>
+            <div class="checklist-links">
+              <a href="https://cert.korcham.net/resources/ebook/ecatalogm.html" target="_blank" rel="noopener">📖 까르네 사용자 가이드</a>
+              <a href="https://cert.korcham.net/html/carnet/03/carnetSamplePopup.htm" target="_blank" rel="noopener">📄 까르네 증서 SET견본</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step-card" id="step6">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 6</span>이용완료 / 까르네 반납</h3>
+            <ul>
+              <li>사용 완료된 까르네 원본을 상공회의소에 반납합니다.(우편 발송 가능)</li>
+              <li>보증보험 환급절차 진행을 위해 우편발송 후 영업관리팀에 공유</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="step-card" id="step7">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 7</span>지출결의서 상신 _ 보증보험 환급금</h3>
+            <ul>
+              <li>보증보험 환급금이 있을 경우, 영업관리팀에서 안내예정.</li>
+              <li>환급 금액 확인 후 품의 진행</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 섹션 2: 체크리스트 -->
+    <section id="checklist">
+      <div class="section-title"><span class="num">✓</span>진행 체크리스트</div>
+      <p class="section-sub">각 단계를 완료할 때마다 체크하며 진행 상황을 관리하세요. (체크 상태는 저장되지 않습니다)</p>
+
+      <div class="checklist-block">
+        <div class="checklist-progress">
+          <span class="progress-label">0 / 7 완료</span>
+          <div class="progress-track"><div class="progress-fill"></div></div>
+        </div>
+
+        <div class="checklist-card">
+          <div class="checklist-item">
+            <input type="checkbox" id="chk1">
+            <label for="chk1">1. 요청부서 Check List 확인 및 완료</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk2">
+            <label for="chk2">2. 예산 및 지출결의서 상신 _ 보증보험료</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk3">
+            <label for="chk3">3. 예산 및 지출결의서 상신 _ 까르네 수수료</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk4">
+            <label for="chk4">4. 까르네 원본 수령</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk5">
+            <label for="chk5">5. 까르네 사용</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk6">
+            <label for="chk6">6. 까르네 반납</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk7">
+            <label for="chk7">7. 지출결의서 상신 _ 보증보험 환급금</label>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="tab-panel" id="tabPanel-sales" role="tabpanel" aria-labelledby="tabBtn-sales" hidden>
+    <section id="salesSteps">
+      <div class="section-title"><span class="num">📋</span>영업관리팀 진행 업무</div>
+      <div class="timeline">
+
+        <!-- Step 1 -->
+        <div class="step-card" id="salesStep1">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 1</span>선적 요청 정보 확인 및 검토</h3>
+            <ul>
+              <li>인코텀즈 확인 후 필요 시 포워딩 컨택 및 견적 진행</li>
+              <li>인허가 여부에 따라 각 국가별 식약처 승인을 위한 추가 절차 있는지 확인 필요 (With RA &amp; Forwarding)</li>
+              <li>비교 견적 후 포워딩 업체 확정 및 선적 스케줄 확보</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card" id="salesStep2">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 2</span>보증보험 가입</h3>
+            <p class="desc">1. 대한상공회의소 홈페이지의 양식 및 견본 탭에서 <strong>ATA 까르네 발급신청서(보험회사 신청용)</strong>을 작성합니다.</p>
+            <div class="info-box">
+              <div class="info-title">보증보험 담보금액 기준</div>
+              <div>물품가격의 <strong>50%</strong>가 기본이며, <strong>중국·인도·크로아티아·이란</strong>은 <strong>70%</strong>를 적용합니다.</div>
+            </div>
+            <p class="desc">2. 작성한 <strong>발급신청서</strong>와 <strong>사업자등록증</strong>을 아래의 지급보증보험 담당자에게 메일로 발송합니다.</p>
+            <div class="info-box">
+              <div class="info-title">SGI 서울보증 남대문지점</div>
+              <div class="contact-row">
+                <span>정지윤 과장님</span>
+                <span>·</span>
+                <a href="mailto:eje9911@naver.com">✉ eje9911@naver.com</a>
+                <span>·</span>
+                <a href="tel:0260500021">☎ 02-6050-0021</a>
+              </div>
+            </div>
+            <div class="link-card">
+              <div class="link-text">
+                <b>ATA 까르네 발급신청서 양식</b>
+                <span>보험회사 신청용 · Word 파일</span>
+              </div>
+              <a class="btn" href="ATA_까르네_발급신청서_양식.doc" download>다운로드</a>
+            </div>
+            <div class="link-card">
+              <div class="link-text">
+                <b>신청서 작성 가이드</b>
+                <span>작성 예시 안내 · PDF 파일</span>
+              </div>
+              <a class="btn" href="신청서_작성_가이드.pdf" download>다운로드</a>
+            </div>
+            <div class="warn-box">
+              <div class="warn-icon">⚠️</div>
+              <div><strong>주의사항 : </strong><strong> 오후 5시 이후</strong> 접수 건은 당일 보험승인이 불가능합니다.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card" id="salesStep3">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 3</span>보증보험 전자서명 및 결제</h3>
+            <ul>
+              <li>보증보험 승인 메일 수령 시, 서울보증보험 홈페이지에서 전자서명 및 보험료 결제를 진행합니다.</li>
+              <li>보증보험 청약서 및 가상계좌 입금안내서 요청부서에 전달 및 품의 상신 요청</li>
+            </ul>
+            <div class="flow-box">
+              <div class="flow-title">[SGI 서울보증 - 홈페이지 전자서명 절차 안내]</div>
+              <div class="flow-steps">
+                <span class="node">www.sgic.co.kr 접속</span><span class="arrow">→</span>
+                <span class="node">법인 공동인증서 로그인</span><span class="arrow">→</span>
+                <span class="node">가입</span><span class="arrow">→</span>
+                <span class="node">보험계약 전자서명</span><span class="arrow">→</span>
+                <span class="node">승인된 증권번호 클릭 후 전자서명 진행</span><span class="arrow">→</span>
+                <span class="node">보험료 결제신청 및 영수증 전달 </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card" id="salesStep4">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 4</span>대한상공회의소 까르네 발급 신청</h3>
+            <p class="desc">보증보험 절차 완료 후 대한상공회의소 홈페이지에서 까르네 발급을 신청합니다.</p>
+            <div class="flow-box">
+              <div class="flow-title">[대한상공회의소 - 까르네 발급 신청 절차 안내]</div>
+              <div class="flow-steps">
+                <span class="node">대한상공회의소 원산지증명센터 접속</span><span class="arrow">→</span>
+                <span class="node">리브스메드 ID 로그인</span><span class="arrow">→</span>
+                <span class="node">ATA 까르네</span><span class="arrow">→</span>
+                <span class="node">신청서 작성 (보증보험 첨부 必)</span><span class="arrow">→</span>
+                <span class="node">까르네 접수</span><span class="arrow">→</span>
+                <span class="node">수수료 결제</span>
+              </div>
+            </div>
+            <div class="warn-box">
+              <div class="warn-icon">⚠️</div>
+              <div>승인 후<strong> 24시간 이내 미결제 시 승인이 자동 취소</strong> 됩니다.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-card" id="salesStep5">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 5</span>선적서류 작성</h3>
+            <ul>
+              <li>Invoice and Packing list 작성</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step-card" id="salesStep6">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 6</span>(필요 시) NDA 체결 with Forwarding</h3>
+            <ul>
+              <li>비밀 유지 계약서 작성 필요 시 표준 계약서 기준으로 포워딩 업체와 체결 진행</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="step-card" id="salesStep7">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 7</span>까르네 사용 여부 및 반납여부 확인 (with 요청부서)</h3>
+            <ul>
+              <li>복귀 후 까르네 사용 여부 및 반납여부 검토</li>
+              <li>까르네 진행 관련하여 현지 이슈사항 없는지 사후 점검</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 8 -->
+        <div class="step-card" id="salesStep8">
+          <div class="step-body">
+            <h3><span class="step-tag">STEP 8</span>보증보험 환급 진행</h3>
+            <ul>
+              <li><strong>보증보험 환급금 있는 경우,</strong> 상공회의소로부터 "이행완료 확인서" 우편 수령 후 작성하여 서울보증보험에 우편 발송 필요 (보험기간 남은 일수에 따라 환산하여 지급)</li>
+            </ul>
+            <div class="info-box">
+              <div class="info-title">서울보증보험 우편 발송처</div>
+              <div>주소 : 서울시 중구 세종대로 39 서울상공회의소 신관15층</div>
+              <div>수령인 : SGI 서울보증 남대문지점 정지윤 과장님</div>
+            </div>
+            <ul>
+              <li><strong>보증보험 환급금 없는 경우,</strong>
+                <ul>
+                  <li><strong>Case 1.</strong> 보험 가입액이 최소 보험료 15,000원에 해당하는 경우 — 기본 보험료만 납입한 경우 별도 환급금은 없으므로, 상공회의소로부터 "이행완료 확인서" 수령 및 작성 후 증빙자료 보관, 추가 진행사항 없음</li>
+                  <li><strong>Case 2.</strong> 까르네 미신청으로 증권 불이용 시 — 까르네 신청없이 중도해지한 경우에만 보증보험료 전액환급 가능. 상공회의소로부터 증권 "불이용확인서" 수령 및 작성 후 서울보증보험에 우편발송 필요</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 섹션 2: 체크리스트 -->
+    <section id="checklistSales">
+      <div class="section-title"><span class="num">✓</span>진행 체크리스트</div>
+      <p class="section-sub">각 단계를 완료할 때마다 체크하며 진행 상황을 관리하세요. (체크 상태는 저장되지 않습니다)</p>
+
+      <div class="checklist-block">
+        <div class="checklist-progress">
+          <span class="progress-label">0 / 8 완료</span>
+          <div class="progress-track"><div class="progress-fill"></div></div>
+        </div>
+
+        <div class="checklist-card">
+          <div class="checklist-item">
+            <input type="checkbox" id="schk1">
+            <label for="schk1">1. 선적 요청 정보 확인 및 검토</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk2">
+            <label for="schk2">2. 보증보험 가입</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk3">
+            <label for="schk3">3. 보증보험 전자서명 및 결제</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk4">
+            <label for="schk4">4. 대한상공회의소 까르네 발급 신청</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk5">
+            <label for="schk5">5. 선적서류 작성</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk6">
+            <label for="schk6">6. NDA 체결 (필요 시) with Forwarding</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk7">
+            <label for="schk7">7. 까르네 사용 여부 및 반납여부 확인 (with 요청부서)</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="schk8">
+            <label for="schk8">8. 보증보험 환급 진행 (필요 시)</label>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<div class="modal" id="carnetModal" role="dialog" aria-modal="true" aria-labelledby="carnetModalTitle" hidden>
+  <div class="modal-dialog">
+    <button class="modal-close" type="button" aria-label="팝업 닫기">&times;</button>
+    <h2 id="carnetModalTitle"></h2>
+    <div id="carnetModalContent"></div>
+  </div>
+</div>
+
+<footer>
+<div>본 가이드의 수수료·절차·담보금액 등 세부 내용은 <a href="https://cert.korcham.net/" target="_blank" rel="noopener">대한상공회의소 원산지증명센터(cert.korcham.net)</a> 안내를 기준으로 작성되었습니다.</div>
+  <div>가이드 제작 및 관리: 영업관리팀 천지혜 주임</div>
+</footer>
+
+<button id="backToTop" aria-label="맨 위로 이동" title="맨 위로 이동">↑</button>
+
+<script>
+  // Tab switching
+  var tabButtons = document.querySelectorAll('.tab-btn');
+  var tabPanels = document.querySelectorAll('.tab-panel');
+  tabButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      tabButtons.forEach(function (b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      tabPanels.forEach(function (p) { p.hidden = true; });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById('tabPanel-' + btn.dataset.tab).hidden = false;
+    });
+  });
+
+  // Back to top button
+  var backToTopBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+  backToTopBtn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ATA CARNET detail modal
+  var overviewButtons = document.querySelectorAll('.overview-card[data-modal-content]');
+  var carnetModal = document.getElementById('carnetModal');
+  var carnetModalTitle = document.getElementById('carnetModalTitle');
+  var carnetModalContent = document.getElementById('carnetModalContent');
+  var modalCloseButton = carnetModal.querySelector('.modal-close');
+  var activeOverviewButton;
+
+  function buildCountryInfoHTML() {
+    var EU = ["그리스", "네덜란드", "덴마크", "독일", "라트비아", "루마니아", "룩셈부르크", "리투아니아", "몰타", "불가리아", "키프로스", "스웨덴", "스페인", "슬로베니아", "슬로바키아", "아일랜드", "에스토니아", "오스트리아", "이탈리아", "체코", "크로아티아", "포르투갈", "폴란드", "프랑스", "핀란드", "헝가리", "벨기에"];
+    var FOOTNOTES = {
+      "인도": { mark: "*", text: "인도의 경우 전시회, 직업용구 물품인 경우에만 까르네 사용 가능" },
+      "남아프리카 공화국": { mark: "†", text: "남아프리카공화국의 인접국(SWAZILAND, NAMIBIA, LESOTHO, BOTSWANA)도 까르네 발급 가능" }
+    };
+    var REGIONS = [
+      { label: "유럽 (Europe)", eu: true, list: ["그리스", "네덜란드", "노르웨이", "덴마크", "독일", "라트비아", "러시아", "루마니아", "룩셈부르크", "리투아니아", "마케도니아", "몬테네그로", "몰도바", "몰타", "벨기에", "벨라루스", "불가리아", "보스니아-헤르체고비나", "세르비아", "스웨덴", "스위스", "스페인", "슬로베니아", "슬로바키아", "아이슬란드", "아일랜드", "안도라", "알바니아", "에스토니아", "영국", "오스트리아", "이탈리아", "우크라이나", "지브롤터", "체코", "크로아티아", "포르투갈", "폴란드", "프랑스", "핀란드", "헝가리", "키프로스"] },
+      { label: "아시아 · 중동 (Asia & Middle East)", list: ["대만", "레바논", "마카오", "말레이시아", "몽골", "바레인", "베트남", "스리랑카", "싱가포르", "아랍에미리트", "이란", "이스라엘", "인도", "인도네시아", "일본", "중국", "카자흐스탄", "카타르", "태국", "튀르키예", "파키스탄", "필리핀", "한국", "홍콩"] },
+      { label: "아프리카 (Africa)", list: ["남아프리카 공화국", "마다가스카르", "모로코", "모리셔스", "세네갈", "알제리", "코트디부아르", "튀니지"] },
+      { label: "아메리카 (Americas)", list: ["미국", "멕시코", "캐나다", "칠레", "페루"] },
+      { label: "오세아니아 · 기타 (Oceania & Others)", list: ["뉴질랜드", "호주", "사우디아라비아"] }
+    ];
+    var euSet = {};
+    EU.forEach(function (name) { euSet[name] = true; });
+
+    var totalCount = REGIONS.reduce(function (sum, r) { return sum + r.list.length; }, 0);
+    var html = '<p class="modal-lead">ATA협약 가입국(총 ' + totalCount + '개국) 목록입니다. 지역명을 눌러 상세 확인하세요.</p><div class="country-accordion">';
+    REGIONS.forEach(function (region, idx) {
+      var marksInRegion = [];
+      var chips = region.list.map(function (name) {
+        var isEU = !!euSet[name];
+        var fn = FOOTNOTES[name];
+        var mark = '';
+        if (fn) {
+          mark = '<span class="star">' + fn.mark + '</span>';
+          if (marksInRegion.indexOf(fn.mark) === -1) marksInRegion.push(fn.mark);
+        }
+        return '<span class="country-chip' + (isEU ? ' eu' : '') + '">' + name + mark + '</span>';
+      }).join('');
+      var notes = '';
+      if (region.eu) notes += '<span class="eu-note">● 초록색 = EU 회원국 (까르네 사용 시 1개국으로 분류)</span>';
+      marksInRegion.forEach(function (mark) {
+        var entry = null;
+        for (var key in FOOTNOTES) { if (FOOTNOTES[key].mark === mark) { entry = FOOTNOTES[key]; break; } }
+        if (entry) notes += '<span class="star-note"><span class="star">' + mark + '</span> ' + entry.text + '</span>';
+      });
+      html += '<details class="country-region"' + (idx === 0 ? ' open' : '') + '>' +
+        '<summary><span class="country-region-title">' + region.label + notes + '</span>' +
+        '<span class="country-region-meta"><span class="count">' + region.list.length + '개국</span><span class="arrow">▶</span></span></summary>' +
+        '<div class="country-region-body">' + chips + '</div></details>';
+    });
+    html += '</div>';
+    return html;
+  }
+
+
+  document.getElementById('countryInfoPanel').insertAdjacentHTML('beforeend', buildCountryInfoHTML());
+
+  var modalContents = {
+    carnetInfo: '<p class="modal-lead">ATA협약 가입국 간에 <strong>일시적으로 물품을 수출입</strong>할 때 사용되는 담보증서입니다.</p><ul class="modal-list"><li>별도의 통관 서류나 관세·부가세 납부 없이 까르네 증서로 통관이 가능합니다.</li><li>까르네는 우리나라에서 수출신고필증, 재수입 신고필증 그리고 수입국에서 수입신고필증, 재수출 신고필증의 기능을 포함하고 있습니다.</li></ul><p class="modal-eyebrow">적용 가능 분야</p><div class="modal-category"><span class="badge">1</span><span class="label">상업견본<span>Commercial Samples</span></span></div><ul class="modal-list"><li>바이어 상담·시연을 위한 샘플로 판매하지 않고 전량 반환하는 물품</li><li>새로 개발한 장비 및 반제품 등을 해외 고객사에서 데모테스트 목적으로 일시 반출하는 물품</li></ul><div class="modal-category"><span class="badge">2</span><span class="label">직업용구<span>Professional Equipment</span></span></div><ul class="modal-list"><li>비즈니스 목적의 출장에 필요한 출장용품</li></ul><div class="modal-category"><span class="badge">3</span><span class="label">전시회·박람회<span>Exhibition and Fairs</span></span></div><ul class="modal-list"><li>국제 전시회·박람회 등에 출품·전시 후 반환하는 물품</li><li>학술심포지엄, 각종 발표회 등의 참가물품</li><li>무역촉진단, 해외 수출상담회에 참가하는 기업의 일시반출 물품</li><li>전시회, 박람회, 컨벤션 등에서 전시 목적으로 반출하는 물품</li></ul><p class="modal-eyebrow">적용 불가 물품</p><div class="modal-category"><span class="badge badge--danger">1</span><span class="label">소모성·1회성 물품</span></div><ul class="modal-list"><li>재반출 없이 소비·소모되는 물품, 카탈로그·전단지 등 인쇄물, 사은품·기부용 물품</li></ul><div class="modal-category"><span class="badge badge--danger">2</span><span class="label">위험물·규제 품목</span></div><ul class="modal-list"><li>전략물자·이중용도(Dual-use) 품목, 통신·보안장비 등 수입국 규제 품목은 국가별 수입허가 없이 사용 제한 — 사전 확인 필수</li></ul><div class="modal-category"><span class="badge badge--danger">3</span><span class="label">가공·수리·개조 목적 물품</span></div><ul class="modal-list"><li>해외에서 가공·수리·조립·개조로 상태가 변경되는 물품, 반제품 상태로 반출해 현지에서 완성 후 재반입하는 물품</li></ul><div class="modal-category"><span class="badge badge--danger">4</span><span class="label">판매 목적 물품</span></div><ul class="modal-list"><li>전시 후 판매·현지 처분 예정 물품, 적정 수량을 초과하는 상업 샘플</li></ul><div class="modal-category"><span class="badge badge--danger">5</span><span class="label">직업용구로 불인정되는 물품</span></div><ul class="modal-list"><li>반출인이 직접 사용하는 장비만 인정 — 제조·생산·건설 설비, 현지 영업활동용 설비는 제외</li></ul>',
+  };
+
+  function closeCarnetModal() {
+    carnetModal.hidden = true;
+    if (activeOverviewButton) {
+      activeOverviewButton.focus();
+    }
+  }
+
+  overviewButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      activeOverviewButton = button;
+      carnetModalTitle.textContent = button.dataset.modalTitle;
+      carnetModalContent.innerHTML = modalContents[button.dataset.modalContent];
+      carnetModal.hidden = false;
+      modalCloseButton.focus();
+    });
+  });
+  modalCloseButton.addEventListener('click', closeCarnetModal);
+  carnetModal.addEventListener('click', function (event) {
+    if (event.target === carnetModal) {
+      closeCarnetModal();
+    }
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && !carnetModal.hidden) {
+      closeCarnetModal();
+    }
+  });
+
+  // Checklist progress tracking
+  document.querySelectorAll('.checklist-block').forEach(function (block) {
+    var checkboxes = block.querySelectorAll('input[type="checkbox"]');
+    var progressFill = block.querySelector('.progress-fill');
+    var progressLabel = block.querySelector('.progress-label');
+
+    function updateProgress() {
+      var total = checkboxes.length;
+      var checked = 0;
+      checkboxes.forEach(function (cb) {
+        var item = cb.closest('.checklist-item');
+        if (cb.checked) {
+          checked++;
+          item.classList.add('checked');
+        } else {
+          item.classList.remove('checked');
+        }
+      });
+      var percent = total === 0 ? 0 : Math.round((checked / total) * 100);
+      progressFill.style.width = percent + '%';
+      progressLabel.textContent = checked + ' / ' + total + ' 완료';
+    }
+
+    checkboxes.forEach(function (cb) {
+      cb.addEventListener('change', updateProgress);
+    });
+
+    updateProgress();
+  });
+</script>
+
+</body>
+</html>
